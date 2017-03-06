@@ -16,6 +16,20 @@ import com.amazonaws.services.elasticmapreduce.model.JobFlowInstancesConfig;
 import com.amazonaws.services.elasticmapreduce.model.RunJobFlowRequest;
 import com.amazonaws.services.elasticmapreduce.model.RunJobFlowResult;
 import com.amazonaws.services.elasticmapreduce.model.StepConfig;
+import java.io.IOException;
+import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.auth.PropertiesCredentials;
+import com.amazonaws.services.ec2.model.InstanceType;
+import com.amazonaws.services.elasticmapreduce.AmazonElasticMapReduce;
+import com.amazonaws.services.elasticmapreduce.AmazonElasticMapReduceClient;
+import com.amazonaws.services.elasticmapreduce.model.HadoopJarStepConfig;
+import com.amazonaws.services.elasticmapreduce.model.JobFlowInstancesConfig;
+import com.amazonaws.services.elasticmapreduce.model.PlacementType;
+import com.amazonaws.services.elasticmapreduce.model.RunJobFlowRequest;
+import com.amazonaws.services.elasticmapreduce.model.RunJobFlowResult;
+import com.amazonaws.services.elasticmapreduce.model.StepConfig;
+import com.sun.tools.internal.jxc.SchemaGenerator;
 
 public class ElasticMapReduceRunner {
 
@@ -28,9 +42,6 @@ public class ElasticMapReduceRunner {
         System.out.println("ElasticMapReduceRunner :: accessKey = "+credentials.getAWSAccessKeyId());
         System.out.println("ElasticMapReduceRunner :: secretKey = "+credentials.getAWSSecretKey());
 
-        mySQS.setAccessAndSecretKey(credentials.getAWSAccessKeyId(), credentials.getAWSSecretKey());
-        AmazonEC2Client ec2 = new AmazonEC2Client(new BasicAWSCredentials(credentials.getAWSAccessKeyId(),credentials.getAWSSecretKey()));
-        String All_local_application_queue_name_url = mySQS.getInstance().createQueue("test");
 
 
         AmazonElasticMapReduce mapReduce = new AmazonElasticMapReduceClient(credentials);
@@ -50,13 +61,12 @@ public class ElasticMapReduceRunner {
                 .withInstanceCount(15)
                 .withMasterInstanceType(InstanceType.M1Small.toString())
                 .withSlaveInstanceType(InstanceType.M1Small.toString())
-                .withHadoopVersion("2.7.3").withEc2KeyName("hardwell")
+                .withHadoopVersion("2.2.0").withEc2KeyName("hardwell")
                 .withKeepJobFlowAliveWhenNoSteps(false);
 
         RunJobFlowRequest runFlowRequest = new RunJobFlowRequest()
                 .withServiceRole("EMR_DefaultRole")
                 .withJobFlowRole("EMR_EC2_DefaultRole")
-                .withReleaseLabel("emr-4.7.0")
                 .withName("ExtractCollations")
                 .withInstances(instances)
                 .withSteps(stepConfig)

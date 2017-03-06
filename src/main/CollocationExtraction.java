@@ -24,12 +24,12 @@ import com.amazonaws.services.elasticmapreduce.model.JobFlowInstancesConfig;
 
 public class CollocationExtraction {
 
-    public static final String INPUT = "C:\\IdeaProjects\\CollocationsExtractionUsingAmazonElasticMapReduce\\input.txt";
+    public static final String INPUT = "C:\\IdeaProjects\\CollocationExtractionUsingAmazonElasticMapReduceProject\\input.txt";
     private static final String FIRST_INTERMEDIATE_OUTPUT = "pipeline\\first_intermediate_output";
     private static final String SECOND_INTERMEDIATE_OUTPUT = "pipeline\\second_intermediate_output";
     private static final String THIRD_INTERMEDIATE_OUTPUT = "pipeline\\third_intermediate_output";
     private static final String FOURTH_INTERMEDIATE_OUTPUT = "pipeline\\fourth_intermediate_output";
-    public static final String OUTPUT = "C:\\IdeaProjects\\CollocationsExtractionUsingAmazonElasticMapReduce\\pipeline\\OUTPUT";
+    public static final String OUTPUT = "C:\\IdeaProjects\\CollocationExtractionUsingAmazonElasticMapReduceProject\\pipeline\\OUTPUT";
 
     public static boolean setAndRunMapReduceJob (String jobName,Configuration conf, Class MapReduceClass,Class Mapper, Class Reducer,
                                           Class MapOutputKey,Class MapOutputValue,Class ReduceOutputKey, Class ReduceOutputValue,

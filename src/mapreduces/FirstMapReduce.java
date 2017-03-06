@@ -63,8 +63,11 @@ public class FirstMapReduce {
                 StringTokenizer itr = new StringTokenizer(value.toString());
 
                 String first_string = itr.nextToken();
+                if(first_string.contains("_")) first_string = first_string.substring(0,first_string.indexOf("_"));
                 Text first = new Text(first_string);
+
                 String second_string = itr.nextToken();
+                if(second_string.contains("_")) second_string=second_string.substring(0,second_string.indexOf("_"));
                 Text second = new Text(second_string);
 
                 if(isStopWordsIncluded) {

@@ -3,10 +3,12 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.auth.PropertiesCredentials;
 import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.ec2.model.InstanceType;
+import com.amazonaws.services.ec2.AmazonEC2Client;
 import com.amazonaws.services.elasticmapreduce.AmazonElasticMapReduce;
 import com.amazonaws.services.elasticmapreduce.AmazonElasticMapReduceClient;
 import com.amazonaws.services.elasticmapreduce.model.HadoopJarStepConfig;
@@ -20,9 +22,17 @@ public class ElasticMapReduceRunner {
     public static String propertiesFilePath = "C:\\IdeaProjects\\CollocationExtractionUsingAmazonElasticMapReduceProject\\src\\main\\resources\\AWSCredentials.properties";
 
     public static void main(String[] args) throws FileNotFoundException, IOException {
+        System.out.println("ElasticMapReduceRunner :: has just started..");
+        System.out.println("ElasticMapReduceRunner :: reading AWSCredentials properties file...");
         AWSCredentials credentials = new PropertiesCredentials(new FileInputStream(propertiesFilePath));
-        System.out.println(credentials.getAWSAccessKeyId());
-        System.out.println(credentials.getAWSSecretKey());
+        System.out.println("ElasticMapReduceRunner :: accessKey = "+credentials.getAWSAccessKeyId());
+        System.out.println("ElasticMapReduceRunner :: secretKey = "+credentials.getAWSSecretKey());
+
+        mySQS.setAccessAndSecretKey(credentials.getAWSAccessKeyId(), credentials.getAWSSecretKey());
+        AmazonEC2Client ec2 = new AmazonEC2Client(new BasicAWSCredentials(credentials.getAWSAccessKeyId(),credentials.getAWSSecretKey()));
+        String All_local_application_queue_name_url = mySQS.getInstance().createQueue("test");
+
+
         AmazonElasticMapReduce mapReduce = new AmazonElasticMapReduceClient(credentials);
         mapReduce.setRegion(Region.getRegion(Regions.US_EAST_1));
 

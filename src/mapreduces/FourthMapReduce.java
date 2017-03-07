@@ -1,7 +1,6 @@
 package mapreduces;
 
 import corpus.Bigram;
-import corpus.CalculatedBigram;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;

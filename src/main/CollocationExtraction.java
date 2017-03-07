@@ -10,30 +10,32 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
-import com.amazonaws.auth.PropertiesCredentials;
-import com.amazonaws.auth.AWSCredentials;
-import com.amazonaws.services.elasticmapreduce.model.PlacementType;
-import com.amazonaws.services.elasticmapreduce.AmazonElasticMapReduce;
-import com.amazonaws.services.elasticmapreduce.AmazonElasticMapReduceClient;
-import com.amazonaws.services.elasticmapreduce.model.HadoopJarStepConfig;
-import com.amazonaws.services.elasticmapreduce.model.StepConfig;
-import com.amazonaws.services.elasticmapreduce.model.RunJobFlowRequest;
-import com.amazonaws.services.elasticmapreduce.model.RunJobFlowResult;
-import com.amazonaws.services.elasticmapreduce.model.JobFlowInstancesConfig;
-
+import org.apache.hadoop.mapreduce.lib.input.SequenceFileInputFormat;
 
 public class CollocationExtraction {
 
-    public static final String INPUT = "C:\\IdeaProjects\\CollocationExtractionUsingAmazonElasticMapReduceProject\\input.txt";
-    private static final String FIRST_INTERMEDIATE_OUTPUT = "pipeline\\first_intermediate_output";
-    private static final String SECOND_INTERMEDIATE_OUTPUT = "pipeline\\second_intermediate_output";
-    private static final String THIRD_INTERMEDIATE_OUTPUT = "pipeline\\third_intermediate_output";
-    private static final String FOURTH_INTERMEDIATE_OUTPUT = "pipeline\\fourth_intermediate_output";
-    public static final String OUTPUT = "C:\\IdeaProjects\\CollocationExtractionUsingAmazonElasticMapReduceProject\\pipeline\\OUTPUT";
+    //public static final String INPUT = "C:\\IdeaProjects\\CollocationExtractionUsingAmazonElasticMapReduceProject\\input.txt";
+    public static final String INPUT = "s3n://collocation-extraction-assignment/input/input.lzo";
+
+    //private static final String FIRST_INTERMEDIATE_OUTPUT = "pipeline\\first_intermediate_output";
+    private static final String FIRST_INTERMEDIATE_OUTPUT = "s3n://collocation-extraction-assignment/pipeline/first_intermediate_output";
+
+    //private static final String SECOND_INTERMEDIATE_OUTPUT = "pipeline\\second_intermediate_output";
+    private static final String SECOND_INTERMEDIATE_OUTPUT = "s3n://collocation-extraction-assignment/pipeline/second_intermediate_output";
+
+    //private static final String THIRD_INTERMEDIATE_OUTPUT = "pipeline\\third_intermediate_output";
+    private static final String THIRD_INTERMEDIATE_OUTPUT = "s3n://collocation-extraction-assignment/pipeline/third_intermediate_output";
+
+    //private static final String FOURTH_INTERMEDIATE_OUTPUT = "pipeline\\fourth_intermediate_output";
+    private static final String FOURTH_INTERMEDIATE_OUTPUT = "s3n://collocation-extraction-assignment/pipeline/fourth_intermediate_output";
+
+    //public static final String OUTPUT = "C:\\IdeaProjects\\CollocationExtractionUsingAmazonElasticMapReduceProject\\pipeline\\OUTPUT";
+    public static final String OUTPUT = "s3n://collocation-extraction-assignment/output/output.txt";
+
 
     public static boolean setAndRunMapReduceJob (String jobName,Configuration conf, Class MapReduceClass,Class Mapper, Class Reducer,
                                           Class MapOutputKey,Class MapOutputValue,Class ReduceOutputKey, Class ReduceOutputValue,
-                                          String Input, String Output) throws Exception{
+                                          String Input, String Output, boolean isLZO) throws Exception{
         Job myJob = new Job(conf, jobName);
         myJob.setJarByClass(MapReduceClass);
         if(Mapper != null) myJob.setMapperClass(Mapper);
@@ -42,6 +44,8 @@ public class CollocationExtraction {
         //Mapper`s output
         myJob.setMapOutputKeyClass(MapOutputKey);
         myJob.setMapOutputValueClass(MapOutputValue);
+
+        if(isLZO) myJob.setInputFormatClass(SequenceFileInputFormat.class);
 
         //Reducer`s output
         if(ReduceOutputKey != null) myJob.setOutputKeyClass(ReduceOutputKey);
@@ -78,37 +82,37 @@ public class CollocationExtraction {
 
         FileSystem fs = FileSystem.get(conf);
 
-        boolean waitForJobComletion = setAndRunMapReduceJob("FirstMapReduce",conf, mapreduces.FirstMapReduce.class,
+        boolean waitForJobComletion = setAndRunMapReduceJob("FirstMapReduce",conf, main.CollocationExtraction.class,
                 mapreduces.FirstMapReduce.FirstMapReduceMapper.class, mapreduces.FirstMapReduce.FirstMapReduceReducer.class,
                 corpus.Bigram.class,IntWritable.class,
                 corpus.Bigram.class,IntWritable.class,
-                INPUT,FIRST_INTERMEDIATE_OUTPUT);
+                INPUT,FIRST_INTERMEDIATE_OUTPUT,true);
 
         if (waitForJobComletion) {
-            waitForJobComletion = setAndRunMapReduceJob("SecondMapReduce", conf, mapreduces.SecondMapReduce.class,
+            waitForJobComletion = setAndRunMapReduceJob("SecondMapReduce", conf, main.CollocationExtraction.class,
                     mapreduces.SecondMapReduce.SecondMapReduceMapper.class, mapreduces.SecondMapReduce.SecondMapReduceReducer.class,
                     corpus.Bigram.class, IntWritable.class,
                     corpus.Bigram.class, IntWritable.class,
-                    FIRST_INTERMEDIATE_OUTPUT, SECOND_INTERMEDIATE_OUTPUT);
+                    FIRST_INTERMEDIATE_OUTPUT, SECOND_INTERMEDIATE_OUTPUT,false);
             if (waitForJobComletion) {
-                waitForJobComletion = setAndRunMapReduceJob("ThirdMapReduce", conf, ThirdMapReduce.class,
+                waitForJobComletion = setAndRunMapReduceJob("ThirdMapReduce", conf, main.CollocationExtraction.class,
                         ThirdMapReduce.ThirdMapReduceMapper.class, ThirdMapReduce.ThirdMapReduceReducer.class,
                         corpus.Bigram.class, Text.class,
                         corpus.Bigram.class, Text.class,
-                        SECOND_INTERMEDIATE_OUTPUT, THIRD_INTERMEDIATE_OUTPUT);
+                        SECOND_INTERMEDIATE_OUTPUT, THIRD_INTERMEDIATE_OUTPUT,false);
 
                 if (waitForJobComletion) {
-                    waitForJobComletion = setAndRunMapReduceJob("FourthMapReduce", conf, FourthMapReduce.class,
+                    waitForJobComletion = setAndRunMapReduceJob("FourthMapReduce", conf, main.CollocationExtraction.class,
                             FourthMapReduce.FourthMapReduceMapper.class, FourthMapReduce.FourthMapReduceReducer.class,
                             corpus.Bigram.class, Text.class,
                             corpus.Bigram.class, Text.class,
-                            THIRD_INTERMEDIATE_OUTPUT, FOURTH_INTERMEDIATE_OUTPUT);
+                            THIRD_INTERMEDIATE_OUTPUT, FOURTH_INTERMEDIATE_OUTPUT,false);
                     if (waitForJobComletion) {
-                        waitForJobComletion = setAndRunMapReduceJob("FifthMapReduce", conf, mapreduces.FifthMapReduce.class,
+                        waitForJobComletion = setAndRunMapReduceJob("FifthMapReduce", conf, main.CollocationExtraction.class,
                                 mapreduces.FifthMapReduce.FifthMapReduceMapper.class, mapreduces.FifthMapReduce.FifthMapReduceReducer.class,
                                 corpus.CalculatedBigram.class, Text.class,
                                 corpus.CalculatedBigram.class, Text.class,
-                                FOURTH_INTERMEDIATE_OUTPUT, OUTPUT);
+                                FOURTH_INTERMEDIATE_OUTPUT, OUTPUT,false);
                         if (waitForJobComletion) {
                             System.out.println("CollocationExtraction :: Done running all map reduces successfully!");
                             return;

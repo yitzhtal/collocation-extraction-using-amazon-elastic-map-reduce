@@ -9,8 +9,8 @@
         <module name="CollocationsExtractionUsingAmazonElasticMapReduce" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="CollocationsExtractionUsingAmazonElasticMapReduce" target="1.8" />
+    <bytecodeTargetLevel target="1.7">
+      <module name="CollocationsExtractionUsingAmazonElasticMapReduce" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

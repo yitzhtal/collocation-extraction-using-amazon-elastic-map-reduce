@@ -9,7 +9,8 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.log4j.Logger;
-
+import corpus.Bigram;
+import org.apache.hadoop.mapreduce.Partitioner;
 import java.io.IOException;
 import java.util.StringTokenizer;
 
@@ -44,6 +45,14 @@ public class FifthMapReduce {
             logger.info("Mapper :: Output :: <key = " + bigram.toString() + ",value = *>");
         }
     }
+
+    public static class FifthMapReducePartitioner extends Partitioner< CalculatedBigram, Text > {
+
+        @Override
+        public int getPartition(CalculatedBigram bigram, Text text, int numReduceTasks) {
+                       return Integer.parseInt(bigram.getDecade().toString())%numReduceTasks;
+                    }
+         }
 
     public static class FifthMapReduceReducer extends Reducer<CalculatedBigram,Text,CalculatedBigram,Text> {
         private Logger logger = Logger.getLogger(FifthMapReduceMapper.class);

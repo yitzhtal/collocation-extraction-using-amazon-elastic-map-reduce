@@ -7,6 +7,7 @@ import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.log4j.Logger;
 import java.io.IOException;
+import org.apache.hadoop.mapreduce.Partitioner;
 import java.util.StringTokenizer;
 
 //this map reduce calculates N
@@ -42,6 +43,14 @@ public class FourthMapReduce {
 
         }
     }
+
+    public static class FourthMapReducePartitioner extends Partitioner< Bigram, Text > {
+
+        @Override
+        public int getPartition(Bigram bigram, Text text, int numReduceTasks) {
+                        return Integer.parseInt(bigram.getDecade().toString())%numReduceTasks;
+                    }
+        }
 
     public static class FourthMapReduceReducer extends Reducer<Bigram,Text,Bigram,Text> {
         private Logger logger = Logger.getLogger(FourthMapReduceMapper.class);

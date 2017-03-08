@@ -1,5 +1,7 @@
 package mapreduces;
 
+import org.apache.hadoop.mapreduce.Partitioner;
+import org.apache.hadoop.io.IntWritable;
 import corpus.Bigram;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
@@ -43,6 +45,14 @@ public class ThirdMapReduce {
             logger.info("Mapper :: Output :: <key = " + bigram.toString() + ",value = *>");
         }
     }
+
+    public static class ThirdMapReducePartitioner extends Partitioner< Bigram, Text > {
+
+        @Override
+        public int getPartition(Bigram bigram, Text text, int numReduceTasks) {
+                        return Integer.parseInt(bigram.getDecade().toString())%numReduceTasks;
+                   }
+        }
 
     public static class ThirdMapReduceReducer extends Reducer<Bigram,Text,Bigram,Text> {
         private Logger logger = Logger.getLogger(ThirdMapReduceMapper.class);

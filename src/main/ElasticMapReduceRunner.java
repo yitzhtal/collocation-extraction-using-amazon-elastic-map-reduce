@@ -26,8 +26,6 @@ public class ElasticMapReduceRunner {
         System.out.println("ElasticMapReduceRunner :: accessKey = "+credentials.getAWSAccessKeyId());
         System.out.println("ElasticMapReduceRunner :: secretKey = "+credentials.getAWSSecretKey());
 
-
-
         AmazonElasticMapReduce mapReduce = new AmazonElasticMapReduceClient(credentials);
         mapReduce.setRegion(Region.getRegion(Regions.US_EAST_1));
 

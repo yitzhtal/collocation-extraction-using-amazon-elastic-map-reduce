@@ -7,6 +7,7 @@ import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Partitioner;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
@@ -35,7 +36,7 @@ public class CollocationExtraction {
 
     public static boolean setAndRunMapReduceJob (String jobName,Configuration conf, Class MapReduceClass,Class Mapper, Class Reducer,
                                           Class MapOutputKey,Class MapOutputValue,Class ReduceOutputKey, Class ReduceOutputValue,
-                                          String Input, String Output, boolean isLZO) throws Exception{
+                                          String Input, String Output, boolean isLZO, Class partitionerClass) throws Exception{
         Job myJob = new Job(conf, jobName);
         myJob.setJarByClass(MapReduceClass);
         if(Mapper != null) myJob.setMapperClass(Mapper);
@@ -50,6 +51,7 @@ public class CollocationExtraction {
         //Reducer`s output
         if(ReduceOutputKey != null) myJob.setOutputKeyClass(ReduceOutputKey);
         if(ReduceOutputValue != null) myJob.setOutputValueClass(ReduceOutputValue);
+        if(partitionerClass != null) myJob.setPartitionerClass(partitionerClass);
 
         TextInputFormat.addInputPath(myJob, new Path(Input));
         TextOutputFormat.setOutputPath(myJob, new Path(Output));
@@ -86,33 +88,33 @@ public class CollocationExtraction {
                 mapreduces.FirstMapReduce.FirstMapReduceMapper.class, mapreduces.FirstMapReduce.FirstMapReduceReducer.class,
                 corpus.Bigram.class,IntWritable.class,
                 corpus.Bigram.class,IntWritable.class,
-                INPUT,FIRST_INTERMEDIATE_OUTPUT,true);
+                INPUT,FIRST_INTERMEDIATE_OUTPUT,true,null);
 
         if (waitForJobComletion) {
             waitForJobComletion = setAndRunMapReduceJob("SecondMapReduce", conf, main.CollocationExtraction.class,
                     mapreduces.SecondMapReduce.SecondMapReduceMapper.class, mapreduces.SecondMapReduce.SecondMapReduceReducer.class,
                     corpus.Bigram.class, IntWritable.class,
                     corpus.Bigram.class, IntWritable.class,
-                    FIRST_INTERMEDIATE_OUTPUT, SECOND_INTERMEDIATE_OUTPUT,false);
+                    FIRST_INTERMEDIATE_OUTPUT, SECOND_INTERMEDIATE_OUTPUT,false,mapreduces.SecondMapReduce.SecondMapReducePartitioner.class);
             if (waitForJobComletion) {
                 waitForJobComletion = setAndRunMapReduceJob("ThirdMapReduce", conf, main.CollocationExtraction.class,
                         ThirdMapReduce.ThirdMapReduceMapper.class, ThirdMapReduce.ThirdMapReduceReducer.class,
                         corpus.Bigram.class, Text.class,
                         corpus.Bigram.class, Text.class,
-                        SECOND_INTERMEDIATE_OUTPUT, THIRD_INTERMEDIATE_OUTPUT,false);
+                        SECOND_INTERMEDIATE_OUTPUT, THIRD_INTERMEDIATE_OUTPUT,false,mapreduces.ThirdMapReduce.ThirdMapReducePartitioner.class);
 
                 if (waitForJobComletion) {
                     waitForJobComletion = setAndRunMapReduceJob("FourthMapReduce", conf, main.CollocationExtraction.class,
                             FourthMapReduce.FourthMapReduceMapper.class, FourthMapReduce.FourthMapReduceReducer.class,
                             corpus.Bigram.class, Text.class,
                             corpus.Bigram.class, Text.class,
-                            THIRD_INTERMEDIATE_OUTPUT, FOURTH_INTERMEDIATE_OUTPUT,false);
+                            THIRD_INTERMEDIATE_OUTPUT, FOURTH_INTERMEDIATE_OUTPUT,false,mapreduces.FourthMapReduce.FourthMapReducePartitioner.class);
                     if (waitForJobComletion) {
                         waitForJobComletion = setAndRunMapReduceJob("FifthMapReduce", conf, main.CollocationExtraction.class,
                                 mapreduces.FifthMapReduce.FifthMapReduceMapper.class, mapreduces.FifthMapReduce.FifthMapReduceReducer.class,
                                 corpus.CalculatedBigram.class, Text.class,
                                 corpus.CalculatedBigram.class, Text.class,
-                                FOURTH_INTERMEDIATE_OUTPUT, OUTPUT,false);
+                                FOURTH_INTERMEDIATE_OUTPUT, OUTPUT,false,mapreduces.FifthMapReduce.FifthMapReducePartitioner.class);
                         if (waitForJobComletion) {
                             System.out.println("CollocationExtraction :: Done running all map reduces successfully!");
                             return;

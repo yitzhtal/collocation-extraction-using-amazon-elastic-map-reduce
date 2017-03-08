@@ -16,7 +16,10 @@ import org.apache.hadoop.mapreduce.lib.input.SequenceFileInputFormat;
 public class CollocationExtraction {
 
     //public static final String INPUT = "C:\\IdeaProjects\\CollocationExtractionUsingAmazonElasticMapReduceProject\\input.txt";
-    public static final String INPUT = "s3n://collocation-extraction-assignment/input/input.lzo";
+    //public static final String INPUT = "s3n://collocation-extraction-assignment/input/heb-2gram-1m.lzo";
+    //public static final String INPUT = "s3n://datasets.elasticmapreduce/ngrams/books/20090715/eng-us-all/2gram/data";
+    //public static final String INPUT = "s3n://AKIAIEDRK6MPYXVQVG5A:rIp9QmdjO31t67qV8qhH5J5P6OuExDiYx1ialOt0@datasets.elasticmapreduce/ngrams/books/20090715/eng-us-all/2gram/data";
+
 
     //private static final String FIRST_INTERMEDIATE_OUTPUT = "pipeline\\first_intermediate_output";
     private static final String FIRST_INTERMEDIATE_OUTPUT = "s3n://collocation-extraction-assignment/pipeline/first_intermediate_output";
@@ -60,8 +63,8 @@ public class CollocationExtraction {
     }
 
     public static void main(String[] args) throws Exception {
-        if (args.length <= 3 || args.length > 4) {
-            System.out.println("The number of arguments is suppose to be 4!");
+        if (args.length <= 3 || args.length > 5) {
+            System.out.println("The number of arguments is suppose to be 5!");
             return;
         }
 
@@ -69,12 +72,14 @@ public class CollocationExtraction {
         String relMinPmi = args[1];
         String language = args[2];
         String isStopWordsIncluded = args[3];
+        String INPUT = args[4];
 
         System.out.println("CollocationExtraction :: has started...\n");
         System.out.println("CollocationExtraction :: Arguments received :: minPmi = " + minPmi);
         System.out.println("CollocationExtraction :: Arguments received :: relMinPmi = " + relMinPmi);
         System.out.println("CollocationExtraction :: Arguments received :: language = " + language);
         System.out.println("CollocationExtraction :: Arguments received :: isStopWordsIncluded = " + isStopWordsIncluded + "\n\n");
+        System.out.println("CollocationExtraction :: Arguments received :: INPUT = " + INPUT + "\n\n");
 
         Configuration conf = new Configuration();
         conf.set("language",language);

@@ -65,4 +65,10 @@
         </dependency>
 
     </dependencies>
+    <exclusions>
+        <exclusion>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+        </exclusion>
+    </exclusions>
 </project>

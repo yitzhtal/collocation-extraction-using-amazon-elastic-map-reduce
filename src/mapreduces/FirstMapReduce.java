@@ -62,60 +62,69 @@ public class FirstMapReduce {
                 logger.info("Mapper :: Input :: <key = " + key.toString() + ",value = " + value.toString() + ">");
                 StringTokenizer itr = new StringTokenizer(value.toString());
 
-                String first_string = itr.nextToken();
-                if(first_string.contains("_")) first_string = first_string.substring(0,first_string.indexOf("_"));
-                Text first = new Text(first_string);
+                if(itr.countTokens() == 6) { //if it is our format - firstword secondword decade p1 p2 p3
+                            boolean filterNumber = false;
 
-                String second_string = itr.nextToken();
-                if(second_string.contains("_")) second_string=second_string.substring(0,second_string.indexOf("_"));
-                Text second = new Text(second_string);
+                            String first_string = itr.nextToken();
+                            if (first_string.contains("_")) first_string = first_string.substring(0, first_string.indexOf("_"));
+                            Text first = new Text(first_string);
 
-                if(isStopWordsIncluded) {
-                        boolean exist = false;
-                        if(context.getConfiguration().get("language").equals("eng")) {
-                                first_string = first_string.trim().toLowerCase();
-                                second_string = second_string.trim().toLowerCase();
-                                for (int i = 0; i < EnglishStopWords.length; i++) {
-                                    if (EnglishStopWords[i].equals(first_string) || EnglishStopWords[i].equals(second_string) || first_string.equals("") || second_string.equals("")) {
-                                        exist = true;
-                                        break;
-                                    }
-                                }
+                            String second_string = itr.nextToken();
+                            if (second_string.contains("_")) second_string = second_string.substring(0, second_string.indexOf("_"));
+                            Text second = new Text(second_string);
 
-                                if(!exist){
-                                    Text decade = new Text(itr.nextToken().substring(0, 3));
-                                    Text numberOfOccurrences = new Text(itr.nextToken());
-                                    Bigram bigram = new Bigram(first, second, decade);
-                                    context.write(bigram, new IntWritable(Integer.parseInt(numberOfOccurrences.toString())));
-                                } else {
-                                    logger.info("Mapper :: has just found a stop word! rejected ->" + first_string + " or " + second_string + "!");
-                                }
-                        } else {
-                            for (int i = 0; i < HebrewStopWords.length; i++) {
-                                if (HebrewStopWords[i].equals(first_string) || HebrewStopWords[i].equals(second_string) || first_string.equals("") || second_string.equals("")) {
-                                    exist = true;
-                                    break;
-                                }
+                            if (first_string.matches(".*\\d+.*") || second_string.matches(".*\\d+.*")) {
+                                filterNumber = true;
                             }
 
-                            if(!exist){
-                                Text decade = new Text(itr.nextToken().substring(0, 3));
-                                Text numberOfOccurrences = new Text(itr.nextToken());
-                                Bigram bigram = new Bigram(first, second, decade);
-                                context.write(bigram, new IntWritable(Integer.parseInt(numberOfOccurrences.toString())));
-                            } else {
-                                logger.info("Mapper :: has just found a stop word! rejected ->" + first_string + " or " + second_string + "!");
+                            if(!filterNumber) {
+                                            if (isStopWordsIncluded) {
+                                                boolean exist = false;
+                                                if (context.getConfiguration().get("language").equals("eng")) {
+                                                    first_string = first_string.trim().toLowerCase();
+                                                    second_string = second_string.trim().toLowerCase();
+                                                    for (int i = 0; i < EnglishStopWords.length; i++) {
+                                                        if (EnglishStopWords[i].equals(first_string) || EnglishStopWords[i].equals(second_string) || first_string.equals("") || second_string.equals("")) {
+                                                            exist = true;
+                                                            break;
+                                                        }
+                                                    }
+
+                                                    if (!exist) {
+                                                        Text decade = new Text(itr.nextToken().substring(0, 3));
+                                                        Text numberOfOccurrences = new Text(itr.nextToken());
+                                                        Bigram bigram = new Bigram(first, second, decade);
+                                                        context.write(bigram, new IntWritable(Integer.parseInt(numberOfOccurrences.toString())));
+                                                    } else {
+                                                        logger.info("Mapper :: has just found a stop word! rejected ->" + first_string + " or " + second_string + "!");
+                                                    }
+                                                } else {
+                                                    for (int i = 0; i < HebrewStopWords.length; i++) {
+                                                        if (HebrewStopWords[i].equals(first_string) || HebrewStopWords[i].equals(second_string) || first_string.equals("") || second_string.equals("")) {
+                                                            exist = true;
+                                                            break;
+                                                        }
+                                                    }
+
+                                                    if (!exist) {
+                                                        Text decade = new Text(itr.nextToken().substring(0, 3));
+                                                        Text numberOfOccurrences = new Text(itr.nextToken());
+                                                        Bigram bigram = new Bigram(first, second, decade);
+                                                        context.write(bigram, new IntWritable(Integer.parseInt(numberOfOccurrences.toString())));
+                                                    } else {
+                                                        logger.info("Mapper :: has just found a stop word! rejected ->" + first_string + " or " + second_string + "!");
+                                                    }
+                                                }
+                                            } else {
+                                                Text decade = new Text(itr.nextToken().substring(0, 3));
+                                                Text numberOfOccurrences = new Text(itr.nextToken());
+                                                Bigram bigram = new Bigram(first, second, decade);
+                                                context.write(bigram, new IntWritable(Integer.parseInt(numberOfOccurrences.toString())));
+                                            }
                             }
                         }
-                } else {
-                        Text decade = new Text(itr.nextToken().substring(0, 3));
-                        Text numberOfOccurrences = new Text(itr.nextToken());
-                        Bigram bigram = new Bigram(first, second, decade);
-                        context.write(bigram, new IntWritable(Integer.parseInt(numberOfOccurrences.toString())));
+                    }
                 }
-
-            }
-        }
 
             public static class FirstMapReduceReducer extends Reducer<Bigram,IntWritable,Bigram,IntWritable> {
                 private Logger logger = Logger.getLogger(FirstMapReduce.FirstMapReduceMapper.class);

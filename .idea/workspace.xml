@@ -7,34 +7,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="307c2673-7474-4882-b066-679414a8ae24" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frontal_checking/eng-us-all-100k-2gram/eng-us-all-100k-2gram.lzo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frontal_checking/heb-2gram-1m/heb-2gram-1m" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/CollocationsExtractionUsingAmazonElasticMapReduce_jar/CollocationsExtractionUsingAmazonElasticMapReduce.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/mapreduces/FifthMapReduce$FifthMapReducePartitioner.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/mapreduces/FourthMapReduce$FourthMapReducePartitioner.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/mapreduces/SecondMapReduce$SecondMapReducePartitioner.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/mapreduces/ThirdMapReduce$ThirdMapReducePartitioner.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/corpus/Bigram.class" afterPath="$PROJECT_DIR$/target/classes/corpus/Bigram.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/ElasticMapReduceRunner_jar/ElasticMapReduceRunner_jar.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/results_to_compare/ishay/heb-2gram-1m.lzo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/ElasticMapReduceRunner_jar.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/ElasticMapReduceRunner_jar/cmd.txt" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/results_to_compare/results_to_compare.zip" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/main/CollocationExtraction.class" afterPath="$PROJECT_DIR$/target/classes/main/CollocationExtraction.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/main/ElasticMapReduceRunner.class" afterPath="$PROJECT_DIR$/target/classes/main/ElasticMapReduceRunner.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapreduces/FifthMapReduce$FifthMapReduceMapper.class" afterPath="$PROJECT_DIR$/target/classes/mapreduces/FifthMapReduce$FifthMapReduceMapper.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapreduces/FifthMapReduce$FifthMapReduceReducer.class" afterPath="$PROJECT_DIR$/target/classes/mapreduces/FifthMapReduce$FifthMapReduceReducer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapreduces/FifthMapReduce.class" afterPath="$PROJECT_DIR$/target/classes/mapreduces/FifthMapReduce.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapreduces/FourthMapReduce$FourthMapReduceMapper.class" afterPath="$PROJECT_DIR$/target/classes/mapreduces/FourthMapReduce$FourthMapReduceMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapreduces/FourthMapReduce$FourthMapReduceReducer.class" afterPath="$PROJECT_DIR$/target/classes/mapreduces/FourthMapReduce$FourthMapReduceReducer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapreduces/FourthMapReduce.class" afterPath="$PROJECT_DIR$/target/classes/mapreduces/FourthMapReduce.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapreduces/SecondMapReduce$SecondMapReduceMapper.class" afterPath="$PROJECT_DIR$/target/classes/mapreduces/SecondMapReduce$SecondMapReduceMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapreduces/SecondMapReduce$SecondMapReduceReducer.class" afterPath="$PROJECT_DIR$/target/classes/mapreduces/SecondMapReduce$SecondMapReduceReducer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapreduces/SecondMapReduce.class" afterPath="$PROJECT_DIR$/target/classes/mapreduces/SecondMapReduce.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapreduces/ThirdMapReduce$ThirdMapReduceMapper.class" afterPath="$PROJECT_DIR$/target/classes/mapreduces/ThirdMapReduce$ThirdMapReduceMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapreduces/ThirdMapReduce$ThirdMapReduceReducer.class" afterPath="$PROJECT_DIR$/target/classes/mapreduces/ThirdMapReduce$ThirdMapReduceReducer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapreduces/ThirdMapReduce.class" afterPath="$PROJECT_DIR$/target/classes/mapreduces/ThirdMapReduce.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapreduces/FirstMapReduce$FirstMapReduceMapper.class" afterPath="$PROJECT_DIR$/target/classes/mapreduces/FirstMapReduce$FirstMapReduceMapper.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapreduces/FirstMapReduce$FirstMapReduceReducer.class" afterPath="$PROJECT_DIR$/target/classes/mapreduces/FirstMapReduce$FirstMapReduceReducer.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/corpus/Bigram.java" afterPath="$PROJECT_DIR$/src/corpus/Bigram.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/CollocationExtraction.java" afterPath="$PROJECT_DIR$/src/main/CollocationExtraction.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/ElasticMapReduceRunner.java" afterPath="$PROJECT_DIR$/src/main/ElasticMapReduceRunner.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mapreduces/FifthMapReduce.java" afterPath="$PROJECT_DIR$/src/mapreduces/FifthMapReduce.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mapreduces/FourthMapReduce.java" afterPath="$PROJECT_DIR$/src/mapreduces/FourthMapReduce.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mapreduces/SecondMapReduce.java" afterPath="$PROJECT_DIR$/src/mapreduces/SecondMapReduce.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mapreduces/ThirdMapReduce.java" afterPath="$PROJECT_DIR$/src/mapreduces/ThirdMapReduce.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mapreduces/FirstMapReduce.java" afterPath="$PROJECT_DIR$/src/mapreduces/FirstMapReduce.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -54,11 +46,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CollocationExtraction.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CollocationExtraction.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/CollocationExtraction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="86" column="30" lean-forward="false" selection-start-line="86" selection-start-column="30" selection-end-line="86" selection-end-column="30" />
+            <state relative-caret-position="202">
+              <caret line="93" column="17" lean-forward="false" selection-start-line="93" selection-start-column="17" selection-end-line="93" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -85,11 +77,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ElasticMapReduceRunner.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ElasticMapReduceRunner.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/ElasticMapReduceRunner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="25" column="26" lean-forward="false" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
+            <state relative-caret-position="733">
+              <caret line="43" column="16" lean-forward="true" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -110,8 +102,8 @@
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+            <state relative-caret-position="189">
+              <caret line="9" column="20" lean-forward="true" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -120,11 +112,9 @@
       <file leaf-file-name="FirstMapReduce.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/mapreduces/FirstMapReduce.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21">
-              <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
+            <state relative-caret-position="312">
+              <caret line="66" column="0" lean-forward="true" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -132,8 +122,8 @@
       <file leaf-file-name="ThirdMapReduce.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/mapreduces/ThirdMapReduce.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="439">
-              <caret line="42" column="32" lean-forward="false" selection-start-line="42" selection-start-column="32" selection-end-line="42" selection-end-column="32" />
+            <state relative-caret-position="567">
+              <caret line="36" column="9" lean-forward="false" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -166,8 +156,8 @@
       <file leaf-file-name="FifthMapReduce.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/mapreduces/FifthMapReduce.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="711">
-              <caret line="52" column="12" lean-forward="false" selection-start-line="52" selection-start-column="12" selection-end-line="52" selection-end-column="12" />
+            <state relative-caret-position="502">
+              <caret line="111" column="0" lean-forward="true" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -208,6 +198,7 @@
       <find>httpcore</find>
       <find>Sixth</find>
       <find>lzo</find>
+      <find>itr</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -244,18 +235,18 @@
         <option value="$PROJECT_DIR$/src/Corpus/CalculatedBigram.java" />
         <option value="$PROJECT_DIR$/src/MapReduces/FirstMapReduce.java" />
         <option value="$PROJECT_DIR$/src/corpus/CalculatedBigram.java" />
-        <option value="$PROJECT_DIR$/src/mapreduces/FirstMapReduce.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mySQS.java" />
         <option value="$PROJECT_DIR$/src/main/mySQS.java" />
         <option value="$PROJECT_DIR$/src/mapreduces/SixthMapReduce.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/ElasticMapReduceRunner.java" />
         <option value="$PROJECT_DIR$/src/corpus/Bigram.java" />
-        <option value="$PROJECT_DIR$/src/main/CollocationExtraction.java" />
-        <option value="$PROJECT_DIR$/src/mapreduces/FifthMapReduce.java" />
         <option value="$PROJECT_DIR$/src/mapreduces/FourthMapReduce.java" />
         <option value="$PROJECT_DIR$/src/mapreduces/SecondMapReduce.java" />
         <option value="$PROJECT_DIR$/src/mapreduces/ThirdMapReduce.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/CollocationExtraction.java" />
+        <option value="$PROJECT_DIR$/src/mapreduces/FifthMapReduce.java" />
+        <option value="$PROJECT_DIR$/src/mapreduces/FirstMapReduce.java" />
+        <option value="$PROJECT_DIR$/src/main/ElasticMapReduceRunner.java" />
       </list>
     </option>
   </component>
@@ -378,10 +369,10 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Facets" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
     <property name="full.screen.before.presentation.mode" value="false" />
   </component>
@@ -395,7 +386,7 @@
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="main.ElasticMapReduceRunner" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="0.5 0.2 eng 1" />
+      <option name="PROGRAM_PARAMETERS" value="0.5 0.2 eng 1 s3n://collocation-extraction-assignment/input/eng-us-all-100k-2gram.lzo" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -610,6 +601,21 @@
       <listeners />
       <method />
     </configuration>
+    <configuration default="false" name="CollocationExtraction" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="main.CollocationExtraction" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="0.5 0.2 heb 1" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="CollocationsExtractionUsingAmazonElasticMapReduce" />
+      <envs />
+      <method />
+    </configuration>
     <configuration default="false" name="WordCount" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="main.CollocationExtraction" />
@@ -625,9 +631,10 @@
       <envs />
       <method />
     </configuration>
-    <list size="2">
-      <item index="0" class="java.lang.String" itemvalue="Application.WordCount" />
-      <item index="1" class="java.lang.String" itemvalue="Application.ElasticMapReduceRunner" />
+    <list size="3">
+      <item index="0" class="java.lang.String" itemvalue="Application.CollocationExtraction" />
+      <item index="1" class="java.lang.String" itemvalue="Application.WordCount" />
+      <item index="2" class="java.lang.String" itemvalue="Application.ElasticMapReduceRunner" />
     </list>
     <recent_temporary>
       <list size="1">
@@ -667,19 +674,19 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32981783" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3835091" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41035473" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32981783" sideWeight="0.5025707" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1581975" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40364334" sideWeight="0.4974293" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26653883" sideWeight="0.4974293" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25886863" sideWeight="0.4974293" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.41418985" sideWeight="0.4974293" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19023137" sideWeight="0.4966443" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2114396" sideWeight="0.4966443" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -775,9 +782,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="16" column="17" lean-forward="false" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -821,9 +826,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="26" column="9" lean-forward="false" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -842,9 +845,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="26" column="9" lean-forward="false" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1032,25 +1033,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/mySQS.java" />
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/mapreduces/SixthMapReduce.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/ElasticMapReduceRunner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="25" column="26" lean-forward="false" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/corpus/Bigram.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
@@ -1059,13 +1042,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="9" column="20" lean-forward="true" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/mapreduces/FifthMapReduce.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="711">
-          <caret line="52" column="12" lean-forward="false" selection-start-line="52" selection-start-column="12" selection-end-line="52" selection-end-column="12" />
+        <state relative-caret-position="502">
+          <caret line="111" column="0" lean-forward="true" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mapreduces/FirstMapReduce.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="66" column="0" lean-forward="true" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1091,26 +1090,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mapreduces/ThirdMapReduce.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="42" column="32" lean-forward="false" selection-start-line="42" selection-start-column="32" selection-end-line="42" selection-end-column="32" />
+        <state relative-caret-position="567">
+          <caret line="36" column="9" lean-forward="false" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mapreduces/FirstMapReduce.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/CollocationExtraction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="86" column="30" lean-forward="false" selection-start-line="86" selection-start-column="30" selection-end-line="86" selection-end-column="30" />
+        <state relative-caret-position="202">
+          <caret line="93" column="17" lean-forward="false" selection-start-line="93" selection-start-column="17" selection-end-line="93" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/ElasticMapReduceRunner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="733">
+          <caret line="43" column="16" lean-forward="true" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1176,7 +1175,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

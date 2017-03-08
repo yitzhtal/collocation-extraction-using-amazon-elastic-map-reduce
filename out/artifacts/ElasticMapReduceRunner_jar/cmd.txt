@@ -1,0 +1,1 @@
+java -jar ElasticMapReduceRunner_jar.jar 0.5 0.2 eng 1 s3n://collocation-extraction-assignment/input/eng-us-all-100k-2gram.lzo

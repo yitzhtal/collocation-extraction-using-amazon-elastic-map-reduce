@@ -18,6 +18,7 @@ import com.amazonaws.services.elasticmapreduce.model.StepConfig;
 public class ElasticMapReduceRunner {
 
     public static String propertiesFilePath = "C:\\IdeaProjects\\CollocationExtractionUsingAmazonElasticMapReduceProject\\src\\main\\resources\\AWSCredentials.properties";
+    //public static final String INPUT = "s3n://collocation-extraction-assignment/input/heb-2gram-1m.lzo";
 
     public static void main(String[] args) throws FileNotFoundException, IOException {
         System.out.println("ElasticMapReduceRunner :: has just started..");
@@ -32,7 +33,7 @@ public class ElasticMapReduceRunner {
         HadoopJarStepConfig hadoopJarStep = new HadoopJarStepConfig()
                 .withJar("s3n://collocation-extraction-assignment/CollocationsExtractionUsingAmazonElasticMapReduce.jar")
                 .withMainClass("main.CollocationExtraction")
-                .withArgs(args[0], args[1], args[2], args[3]);
+                .withArgs(args[0], args[1], args[2], args[3], args[4]);
 
         StepConfig stepConfig = new StepConfig()
                 .withName("CollocationExtraction")
@@ -40,7 +41,7 @@ public class ElasticMapReduceRunner {
                 .withActionOnFailure("TERMINATE_JOB_FLOW");
 
         JobFlowInstancesConfig instances = new JobFlowInstancesConfig()
-                .withInstanceCount(4)
+                .withInstanceCount(5)
                 .withMasterInstanceType(InstanceType.M1Small.toString())
                 .withSlaveInstanceType(InstanceType.M1Small.toString())
                 .withHadoopVersion("2.2.0").withEc2KeyName("hardwell")

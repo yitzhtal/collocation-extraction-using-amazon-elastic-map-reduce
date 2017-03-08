@@ -114,7 +114,7 @@ public class FifthMapReduce {
                     Double relMinPmi = Double.parseDouble(context.getConfiguration().get("relMinPmi"));
 
                     logger.info("minPmi = "+minPmi +", relMinPmi = "+relMinPmi);
-                    if(npmi >= minPmi || relativePMI >= relMinPmi) {
+                    if(npmi >= minPmi && relativePMI >= relMinPmi) {
                         context.write(new CalculatedBigram(key.getFirst(),key.getSecond(),key.getDecade()), npmiAsText);
                         logger.info("Reducer :: Output :: <key = " + key.toString() + ",value = " + new Text(npmiAsText.toString() )+ ">");
                     } else {

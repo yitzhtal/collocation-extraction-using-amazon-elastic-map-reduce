@@ -13,7 +13,7 @@ import corpus.Bigram;
 import org.apache.hadoop.mapreduce.Partitioner;
 import java.io.IOException;
 import java.util.StringTokenizer;
-
+import java.lang.StringBuffer;
 import corpus.CalculatedBigram;
 
 //this map reduce calculates N
@@ -90,18 +90,16 @@ public class FifthMapReduce {
                     }
                     sumOfAllNormalizedPMI += sum;
                 } else {
-                    String dataToTransfer = "";
+                    StringBuffer dataToTransfer = new StringBuffer("");
                     for (Text value : values) {
                         logger.info(" dataToTransfer += " +value.toString());
-                        dataToTransfer += value.toString();
+                        dataToTransfer.append(value.toString());
                     }
 
                     StringTokenizer itr = new StringTokenizer(dataToTransfer.toString());
 
                     //now we have  sumOfAllNormalizedPMI!
-                    String i = itr.nextToken();
-                    logger.info(" i = " + i);
-                    double npmi = Double.parseDouble(i);
+                    double npmi = Double.parseDouble(itr.nextToken());
                     Text npmiAsText = new Text(String.valueOf(npmi));
                     double sumOfAllNormalizedPMIasDouble = Double.parseDouble(String.valueOf(sumOfAllNormalizedPMI));
 

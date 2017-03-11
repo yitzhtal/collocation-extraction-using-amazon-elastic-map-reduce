@@ -14,6 +14,8 @@ import com.amazonaws.services.elasticmapreduce.model.JobFlowInstancesConfig;
 import com.amazonaws.services.elasticmapreduce.model.RunJobFlowRequest;
 import com.amazonaws.services.elasticmapreduce.model.RunJobFlowResult;
 import com.amazonaws.services.elasticmapreduce.model.StepConfig;
+import com.amazonaws.services.elasticmapreduce.model.ScriptBootstrapActionConfig;
+import com.amazonaws.services.elasticmapreduce.model.BootstrapActionConfig;
 
 public class ElasticMapReduceRunner {
 
@@ -41,17 +43,31 @@ public class ElasticMapReduceRunner {
                 .withActionOnFailure("TERMINATE_JOB_FLOW");
 
         JobFlowInstancesConfig instances = new JobFlowInstancesConfig()
-                .withInstanceCount(5)
-                .withMasterInstanceType(InstanceType.M1Small.toString())
-                .withSlaveInstanceType(InstanceType.M1Small.toString())
-                .withHadoopVersion("2.2.0").withEc2KeyName("hardwell")
+                .withInstanceCount(15)
+                .withMasterInstanceType(InstanceType.M1Xlarge.toString())
+                .withSlaveInstanceType(InstanceType.M1Xlarge.toString())
+                .withHadoopVersion("2.4.0").withEc2KeyName("hardwell")
                 .withKeepJobFlowAliveWhenNoSteps(false);
+
+        // Configure hadoop
+        final ScriptBootstrapActionConfig scriptBootstrapAction =
+                new ScriptBootstrapActionConfig()
+                        .withPath(
+                                "s3n://eu-west-1.elasticmapreduce/bootstrap-actions/configure-hadoop")
+                        .withArgs("--mapred-key-value",
+                                "mapred.child.java.opts=-Xmx4096m");
+
+        final BootstrapActionConfig bootstrapActions =
+                new BootstrapActionConfig().withName("Configure hadoop")
+                        .withScriptBootstrapAction(scriptBootstrapAction);
 
         RunJobFlowRequest runFlowRequest = new RunJobFlowRequest()
                 .withServiceRole("EMR_DefaultRole")
                 .withJobFlowRole("EMR_EC2_DefaultRole")
                 .withName("ExtractCollations")
+                .withBootstrapActions(bootstrapActions)
                 .withInstances(instances)
+                .withAmiVersion("3.1.0")
                 .withSteps(stepConfig)
                 .withLogUri("s3n://collocation-extraction-assignment/logs/");
 

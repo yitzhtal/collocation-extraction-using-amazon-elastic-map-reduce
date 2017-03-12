@@ -10,7 +10,7 @@ import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.log4j.Logger;
 import java.io.IOException;
 import java.util.StringTokenizer;
-
+import java.lang.StringBuffer;
 //this map reduce is calculating c(W2)
 
 public class ThirdMapReduce {
@@ -90,9 +90,9 @@ public class ThirdMapReduce {
                     }
                     secondWordCounter += sum;
                 } else {
-                    String dataToTransfer = "";
+                    StringBuffer dataToTransfer = new StringBuffer("");
                     for (Text value : values) {
-                        dataToTransfer += value.toString();
+                        dataToTransfer.append(value.toString());
                     }
                     Text Cw2 = new Text(String.valueOf(secondWordCounter));
                     context.write(new Bigram(key.getSecond(), key.getFirst(), key.getDecade()), new Text(dataToTransfer.toString() + " " + Cw2.toString()));

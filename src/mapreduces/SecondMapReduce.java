@@ -19,13 +19,13 @@ public class SecondMapReduce {
     public SecondMapReduce() {}
 
     public static class SecondMapReduceMapper extends Mapper<LongWritable, Text, Bigram, IntWritable> {
-        private Logger logger = Logger.getLogger(SecondMapReduceMapper.class);
+        //private Logger logger = Logger.getLogger(SecondMapReduceMapper.class);
 
         public SecondMapReduceMapper() {}
 
         @Override
         public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-            logger.info("Mapper :: Input :: <key = " + key.toString() + ",value = " + value.toString() + ">");
+            //logger.info("Mapper :: Input :: <key = " + key.toString() + ",value = " + value.toString() + ">");
             StringTokenizer itr = new StringTokenizer(value.toString());
             Text first = new Text(itr.nextToken());
             Text second = new Text(itr.nextToken());
@@ -37,8 +37,8 @@ public class SecondMapReduce {
 
             context.write(bigram,numberOfOccurrencesToSend); //we write the data from the former map reduce
             context.write(bigramWithAsterisk,numberOfOccurrencesToSend);
-            logger.info("Mapper :: Output :: <key = " + bigram.toString() + ",value = " + value + ">");
-            logger.info("Mapper :: Output :: <key = " + bigram.toString() + ",value = *>");
+            //logger.info("Mapper :: Output :: <key = " + bigram.toString() + ",value = " + value + ">");
+            //logger.info("Mapper :: Output :: <key = " + bigram.toString() + ",value = *>");
         }
     }
 
@@ -51,7 +51,7 @@ public class SecondMapReduce {
          }
 
     public static class SecondMapReduceReducer extends Reducer<Bigram,IntWritable,Bigram,Text> {
-        private Logger logger = Logger.getLogger(SecondMapReduceMapper.class);
+        //private Logger logger = Logger.getLogger(SecondMapReduceMapper.class);
         private int firstWordCounter;
 
         //keep track of the incoming keys
@@ -64,13 +64,13 @@ public class SecondMapReduce {
 
         @Override
         public void reduce(Bigram key, Iterable<IntWritable> values, Context context) throws IOException,  InterruptedException {
-            logger.info("------------------------");
-            logger.info("Reducer :: Input :: <key = " + key.toString() + ",value="+values.toString()+">");
-            logger.info("first word = "+currentFirstWord);
+            //logger.info("------------------------");
+            //logger.info("Reducer :: Input :: <key = " + key.toString() + ",value="+values.toString()+">");
+            //logger.info("first word = "+currentFirstWord);
             if(!key.getFirst().equals(currentFirstWord)) {
-                logger.info("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
+                //logger.info("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
                     currentFirstWord = key.getFirst();
-                    logger.info("currentFirstWord changed to = "+currentFirstWord);
+                    //logger.info("currentFirstWord changed to = "+currentFirstWord);
                     firstWordCounter = 0;
                     int sum = 0;
                     for (IntWritable value : values) {
@@ -79,8 +79,8 @@ public class SecondMapReduce {
                     firstWordCounter += sum;
             } else {
                     if (key.getSecond().toString().equals("*")) {
-                        logger.info("first word = "+currentFirstWord);
-                        logger.info("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+                        //logger.info("first word = "+currentFirstWord);
+                        //logger.info("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
                         firstWordCounter = 0;
                         int sum = 0;
                         for (IntWritable value : values) {
@@ -88,14 +88,14 @@ public class SecondMapReduce {
                         }
                         firstWordCounter += sum;
                     } else {
-                        logger.info("first word = "+currentFirstWord);
+                        //logger.info("first word = "+currentFirstWord);
                         Text Cw1w2 = new Text(values.iterator().next().toString());
                         Text Cw1 = new Text(String.valueOf(firstWordCounter));
 
                         context.write(new Bigram(key.getFirst(), key.getSecond(), key.getDecade()), new Text(Cw1w2.toString() + " " + Cw1.toString()));
                     }
             }
-            logger.info("------------------------");
+            //logger.info("------------------------");
         }
     }
 }

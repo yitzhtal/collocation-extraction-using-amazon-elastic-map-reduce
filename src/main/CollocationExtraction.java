@@ -85,6 +85,14 @@ public class CollocationExtraction {
         conf.set("minPmi",minPmi);
         conf.set("relMinPmi",relMinPmi);
         conf.set("isStopWordsIncluded",isStopWordsIncluded);
+        conf.set("mapreduce.map.java.opts","-Xmx4096m");
+        conf.set("mapreduce.reduce.java.opts","-Xmx4096m");
+        conf.set("mapreduce.reduce.memory.mb","2048");
+        conf.set("yarn.app.mapreduce.am.resource.mb","2048");
+        conf.set("yarn.scheduler.minimum-allocation-mb","256");
+        conf.set("yarn.scheduler.maximum-allocation-mb","12288");
+        conf.set("yarn.nodemanager.resource.memory-mb","12288");
+
 
         FileSystem fs = FileSystem.get(conf);
 

@@ -17,13 +17,13 @@ public class FourthMapReduce {
     public FourthMapReduce() {}
 
     public static class FourthMapReduceMapper extends Mapper<LongWritable, Text, Bigram, Text> {
-        private Logger logger = Logger.getLogger(FourthMapReduceMapper.class);
+        //private Logger logger = Logger.getLogger(FourthMapReduceMapper.class);
 
         public FourthMapReduceMapper() {}
 
         @Override
         public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-            logger.info("Mapper :: Input :: <key = " + key.toString() + ",value = " + value.toString() + ">");
+            //logger.info("Mapper :: Input :: <key = " + key.toString() + ",value = " + value.toString() + ">");
             StringTokenizer itr = new StringTokenizer(value.toString());
             Text first = new Text(itr.nextToken());
             Text second = new Text(itr.nextToken());
@@ -38,8 +38,8 @@ public class FourthMapReduce {
 
             context.write(bigram,dataToTransfer); //we write the data from the former map reduce
             context.write(bigramByDecade,dataToTransfer);
-            logger.info("Mapper :: Output :: <key = " + bigram.toString() + ",value = " + value + ">");
-            logger.info("Mapper :: Output :: <key = " + bigram.toString() + ",value = *>");
+            //logger.info("Mapper :: Output :: <key = " + bigram.toString() + ",value = " + value + ">");
+            //logger.info("Mapper :: Output :: <key = " + bigram.toString() + ",value = *>");
 
         }
     }
@@ -53,7 +53,7 @@ public class FourthMapReduce {
         }
 
     public static class FourthMapReduceReducer extends Reducer<Bigram,Text,Bigram,Text> {
-        private Logger logger = Logger.getLogger(FourthMapReduceMapper.class);
+        //private Logger logger = Logger.getLogger(FourthMapReduceMapper.class);
         private int N;
 
         //keep track of the incoming keys
@@ -66,8 +66,8 @@ public class FourthMapReduce {
 
         @Override
         public void reduce(Bigram key, Iterable<Text> values, Context context) throws IOException,  InterruptedException {
-            logger.info("------------------------");
-            logger.info("Reducer :: Input :: <key = " + key.toString() + ",value="+values.toString()+">");
+            //logger.info("------------------------");
+            //logger.info("Reducer :: Input :: <key = " + key.toString() + ",value="+values.toString()+">");
 
             if(!key.getDecade().equals(currentDecade)) {
                 currentDecade = key.getDecade();
@@ -88,9 +88,9 @@ public class FourthMapReduce {
                     }
                     N += sum;
                 } else {
-                    String dataToTransfer = "";
+                    StringBuffer dataToTransfer = new StringBuffer("");
                     for (Text value : values) {
-                        dataToTransfer += value.toString();
+                        dataToTransfer.append(value.toString());
                     }
 
                     StringTokenizer itr = new StringTokenizer(dataToTransfer.toString());
@@ -101,30 +101,30 @@ public class FourthMapReduce {
                     double Cw1 = Double.parseDouble(itr.nextToken());
                     double Cw2 = Double.parseDouble(itr.nextToken());
                     double NasDouble = Double.parseDouble(String.valueOf(N));
-                    logger.info("Cw1w2 = "+Cw1w2 + ", Cw1= "+ Cw1+ ",Cw2= "+Cw2+ ",N="+NasDouble);
+                    //logger.info("Cw1w2 = "+Cw1w2 + ", Cw1= "+ Cw1+ ",Cw2= "+Cw2+ ",N="+NasDouble);
                     double pmi = (double) (Math.log(Cw1w2) + Math.log(NasDouble) - Math.log(Cw1) - Math.log(Cw2));
-                    logger.info("pmi = " + pmi);
+                    //logger.info("pmi = " + pmi);
                     double pw1w2 = (double) Cw1w2 / NasDouble;
-                    logger.info("pw1w2 = "+pw1w2);
+                    //logger.info("pw1w2 = "+pw1w2);
                     double formulaDenominator = ((-1) * Math.log(pw1w2));
-                    logger.info("formulaDenominator = "+ formulaDenominator);
+                    //logger.info("formulaDenominator = "+ formulaDenominator);
                     double npmi = 0;
                     npmi = (double) pmi / formulaDenominator;
-                    logger.info("npmi = "+npmi);
+                    //logger.info("npmi = "+npmi);
 
                     Text npmiAsText = new Text(String.valueOf(npmi));
                     Double minPmi = Double.parseDouble(context.getConfiguration().get("minPmi"));
                     Double relMinPmi = Double.parseDouble(context.getConfiguration().get("relMinPmi"));
 
-                    logger.info("minPmi = "+minPmi +", relMinPmi = "+relMinPmi);
+                    //logger.info("minPmi = "+minPmi +", relMinPmi = "+relMinPmi);
 
                     context.write(new corpus.Bigram(key.getFirst(),key.getSecond(),key.getDecade()),npmiAsText);
-                    logger.info("Reducer :: Output :: <key = " + key.toString() + ",value = " + new Text("done!").toString() + ">");
-                    logger.info("Reducer :: Output :: <key = " + key.toString() + ",value = *>");
+                    //logger.info("Reducer :: Output :: <key = " + key.toString() + ",value = " + new Text("done!").toString() + ">");
+                    //logger.info("Reducer :: Output :: <key = " + key.toString() + ",value = *>");
                 }
             }
 
-            logger.info("------------------------");
+            //logger.info("------------------------");
         }
     }
 }

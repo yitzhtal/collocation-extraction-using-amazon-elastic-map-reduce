@@ -18,13 +18,13 @@ public class ThirdMapReduce {
     public ThirdMapReduce() {}
 
     public static class ThirdMapReduceMapper extends Mapper<LongWritable, Text, Bigram, Text> {
-        private Logger logger = Logger.getLogger(ThirdMapReduceMapper.class);
+        //private Logger logger = Logger.getLogger(ThirdMapReduceMapper.class);
 
         public ThirdMapReduceMapper() {}
 
         @Override
         public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-            logger.info("Mapper :: Input :: <key = " + key.toString() + ",value = " + value.toString() + ">");
+            //logger.info("Mapper :: Input :: <key = " + key.toString() + ",value = " + value.toString() + ">");
             StringTokenizer itr = new StringTokenizer(value.toString());
             Text first = new Text(itr.nextToken());
             Text second = new Text(itr.nextToken());
@@ -41,8 +41,8 @@ public class ThirdMapReduce {
 
             context.write(bigram,dataToTransfer);
             context.write(bigramWithAsterisk,dataToTransfer);
-            logger.info("Mapper :: Output :: <key = " + bigram.toString() + ",value = " + value + ">");
-            logger.info("Mapper :: Output :: <key = " + bigram.toString() + ",value = *>");
+            //logger.info("Mapper :: Output :: <key = " + bigram.toString() + ",value = " + value + ">");
+            //logger.info("Mapper :: Output :: <key = " + bigram.toString() + ",value = *>");
         }
     }
 
@@ -55,7 +55,7 @@ public class ThirdMapReduce {
         }
 
     public static class ThirdMapReduceReducer extends Reducer<Bigram,Text,Bigram,Text> {
-        private Logger logger = Logger.getLogger(ThirdMapReduceMapper.class);
+        //private Logger logger = Logger.getLogger(ThirdMapReduceMapper.class);
         private int secondWordCounter;
 
         //keep track of the incoming keys
@@ -68,8 +68,8 @@ public class ThirdMapReduce {
 
         @Override
         public void reduce(Bigram key, Iterable<Text> values, Context context) throws IOException,  InterruptedException {
-            logger.info("------------------------");
-            logger.info("Reducer :: Input :: <key = " + key.toString() + ",value="+values.toString()+">");
+            //logger.info("------------------------");
+            //logger.info("Reducer :: Input :: <key = " + key.toString() + ",value="+values.toString()+">");
 
             if(!key.getFirst().equals(currentSecondWord)) {
                 currentSecondWord = key.getFirst();
@@ -98,7 +98,7 @@ public class ThirdMapReduce {
                     context.write(new Bigram(key.getSecond(), key.getFirst(), key.getDecade()), new Text(dataToTransfer.toString() + " " + Cw2.toString()));
                 }
             }
-            logger.info("------------------------");
+            //logger.info("------------------------");
         }
     }
 }

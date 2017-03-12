@@ -16,6 +16,7 @@ import com.amazonaws.services.elasticmapreduce.model.RunJobFlowResult;
 import com.amazonaws.services.elasticmapreduce.model.StepConfig;
 import com.amazonaws.services.elasticmapreduce.model.ScriptBootstrapActionConfig;
 import com.amazonaws.services.elasticmapreduce.model.BootstrapActionConfig;
+import com.amazonaws.services.elasticmapreduce.util.*;
 
 public class ElasticMapReduceRunner {
 
@@ -49,23 +50,34 @@ public class ElasticMapReduceRunner {
                 .withHadoopVersion("2.4.0").withEc2KeyName("hardwell")
                 .withKeepJobFlowAliveWhenNoSteps(false);
 
-        // Configure hadoop
-        final ScriptBootstrapActionConfig scriptBootstrapAction =
+        /*final ScriptBootstrapActionConfig firstScriptBootstrapAction =
                 new ScriptBootstrapActionConfig()
                         .withPath(
-                                "s3n://eu-west-1.elasticmapreduce/bootstrap-actions/configure-hadoop")
-                        .withArgs("--mapred-key-value",
+                                "s3n://us-east-1.elasticmapreduce/bootstrap-actions/configure-hadoop")
+                        .withArgs("--site-key-value",
                                 "mapred.child.java.opts=-Xmx4096m");
 
-        final BootstrapActionConfig bootstrapActions =
+
+        final ScriptBootstrapActionConfig secondScriptBootstrapAction =
+                new ScriptBootstrapActionConfig()
+                        .withPath(
+                                "s3n://us-east-1.elasticmapreduce/bootstrap-actions/configure-hadoop")
+                        .withArgs("--site-key-value",
+                                "mapreduce.reduce.shuffle.input.buffer.percent=0.5");
+
+        BootstrapActionConfig firstBootstrapAction =
                 new BootstrapActionConfig().withName("Configure hadoop")
-                        .withScriptBootstrapAction(scriptBootstrapAction);
+                        .withScriptBootstrapAction(firstScriptBootstrapAction);
+
+        BootstrapActionConfig secondBootstrapAction =
+                new BootstrapActionConfig().withName("Configure hadoop")
+                        .withScriptBootstrapAction(secondScriptBootstrapAction);*/
 
         RunJobFlowRequest runFlowRequest = new RunJobFlowRequest()
                 .withServiceRole("EMR_DefaultRole")
                 .withJobFlowRole("EMR_EC2_DefaultRole")
                 .withName("ExtractCollations")
-                .withBootstrapActions(bootstrapActions)
+                //.withBootstrapActions(firstBootstrapAction,secondBootstrapAction)
                 .withInstances(instances)
                 .withAmiVersion("3.1.0")
                 .withSteps(stepConfig)

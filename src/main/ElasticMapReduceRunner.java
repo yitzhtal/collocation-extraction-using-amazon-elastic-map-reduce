@@ -20,7 +20,7 @@ import com.amazonaws.services.elasticmapreduce.util.*;
 
 public class ElasticMapReduceRunner {
 
-    public static String propertiesFilePath = "C:\\IdeaProjects\\CollocationExtractionUsingAmazonElasticMapReduceProject\\src\\main\\resources\\AWSCredentials.properties";
+    public static String propertiesFilePath = "/Users/yoavcohen/Documents/workspace/talwordcount/src/main/resources/AWSCredentials.properties";
     //public static final String INPUT = "s3n://collocation-extraction-assignment/input/heb-2gram-1m.lzo";
 
     public static void main(String[] args) throws FileNotFoundException, IOException {

@@ -93,7 +93,7 @@ public class CollocationExtraction {
         conf.set("yarn.scheduler.minimum-allocation-mb","256");
         conf.set("yarn.scheduler.maximum-allocation-mb","12288");
         conf.set("yarn.nodemanager.resource.memory-mb","12288");
-        conf.set("mapreduce.reduce.shuffle.input.buffer.percent","0.2");
+        conf.set("mapreduce.reduce.shuffle.memory.limit.percent","0.5");
 
         FileSystem fs = FileSystem.get(conf);
 

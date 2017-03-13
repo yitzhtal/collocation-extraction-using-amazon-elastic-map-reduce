@@ -7,16 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="307c2673-7474-4882-b066-679414a8ae24" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/results_to_compare/ishay/heb-2gram-1m.lzo" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/results_to_compare/schnaps/input.lzo" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/results_to_compare/schnaps/output.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/results_to_compare/shukron/input.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/results_to_compare/shukron/shukron.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/results_to_compare/shukron/tal.txt" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.docx" afterPath="$PROJECT_DIR$/README.docx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mapreduces/FifthMapReduce.java" afterPath="$PROJECT_DIR$/src/mapreduces/FifthMapReduce.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mapreduces/FirstMapReduce.java" afterPath="$PROJECT_DIR$/src/mapreduces/FirstMapReduce.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />

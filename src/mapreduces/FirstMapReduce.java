@@ -73,11 +73,17 @@ public class FirstMapReduce {
                             if (second_string.contains("_")) second_string = second_string.substring(0, second_string.indexOf("_"));
                             Text second = new Text(second_string);
 
-                            //if (first_string.matches(".*\\d+.*") || second_string.matches(".*\\d+.*")) {
-                            //    filterNumber = true;
-                            //}
+                            if (first_string.matches(".*\\d+.*") || second_string.matches(".*\\d+.*")) {
+                                filterNumber = true;
+                            }
 
-                            //if(!filterNumber) {
+                            if (first_string.equals("׳") || second_string.equals("׳") || first_string.equals("•") || second_string.equals("•")
+                                    || first_string.equals("—") || second_string.equals("—")|| first_string.equals("/") || second_string.equals("/")
+                                    || first_string.equals("״") || second_string.equals("״")) {
+                                filterNumber = true;
+                            }
+
+                            if(!filterNumber) {
                                             if (isStopWordsIncluded) {
                                                 boolean exist = false;
                                                 if (context.getConfiguration().get("language").equals("eng")) {
@@ -121,7 +127,7 @@ public class FirstMapReduce {
                                                 Bigram bigram = new Bigram(first, second, decade);
                                                 context.write(bigram, new IntWritable(Integer.parseInt(numberOfOccurrences.toString())));
                                             }
-                            //}//
+                            }
                         }
                     }
                 }

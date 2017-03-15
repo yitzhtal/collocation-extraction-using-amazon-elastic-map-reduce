@@ -11,6 +11,7 @@ import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import org.apache.hadoop.mapreduce.lib.input.SequenceFileInputFormat;
+import org.apache.hadoop.io.LongWritable;
 
 public class CollocationExtraction {
 
@@ -99,14 +100,14 @@ public class CollocationExtraction {
 
         boolean waitForJobComletion = setAndRunMapReduceJob("FirstMapReduce",conf, main.CollocationExtraction.class,
                 mapreduces.FirstMapReduce.FirstMapReduceMapper.class, mapreduces.FirstMapReduce.FirstMapReduceReducer.class,
-                corpus.Bigram.class,IntWritable.class,
-                corpus.Bigram.class,IntWritable.class,
+                corpus.Bigram.class,LongWritable.class,
+                corpus.Bigram.class,LongWritable.class,
                 INPUT,FIRST_INTERMEDIATE_OUTPUT,true,null);
 
         if (waitForJobComletion) {
             waitForJobComletion = setAndRunMapReduceJob("SecondMapReduce", conf, main.CollocationExtraction.class,
                     mapreduces.SecondMapReduce.SecondMapReduceMapper.class, mapreduces.SecondMapReduce.SecondMapReduceReducer.class,
-                    corpus.Bigram.class, IntWritable.class,
+                    corpus.Bigram.class, LongWritable.class,
                     corpus.Bigram.class, IntWritable.class,
                     FIRST_INTERMEDIATE_OUTPUT, SECOND_INTERMEDIATE_OUTPUT,false,mapreduces.SecondMapReduce.SecondMapReducePartitioner.class);
             if (waitForJobComletion) {

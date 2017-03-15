@@ -108,14 +108,14 @@ public class FifthMapReduce {
                     //logger.info("npmi = "+npmi + ", sumOfAllNormalizedPMIasDouble= "+ sumOfAllNormalizedPMIasDouble);
                     double relativePMI = (double) npmi / sumOfAllNormalizedPMIasDouble;
                     Text relativePMIAsText = new Text(String.valueOf(relativePMI));
-                    //logger.info("relativePMI = " + relativePMI);
+                     //logger.info("relativePMI = " + relativePMI);
 
                     Double minPmi = Double.parseDouble(context.getConfiguration().get("minPmi"));
                     Double relMinPmi = Double.parseDouble(context.getConfiguration().get("relMinPmi"));
 
                     //logger.info("minPmi = "+minPmi +", relMinPmi = "+relMinPmi);
                     if(npmi >= minPmi || relativePMI >= relMinPmi) {
-                        if(!npmiAsText.toString().equals("Infinity")) context.write(new CalculatedBigram(key.getFirst(),key.getSecond(),key.getDecade()), npmiAsText);
+                        context.write(new CalculatedBigram(key.getFirst(),key.getSecond(),key.getDecade()), npmiAsText);
                         //logger.info("Reducer :: Output :: <key = " + key.toString() + ",value = " + new Text(npmiAsText.toString() )+ ">");
                     } else {
                         //logger.info("Reducer :: Output :: rejected the bigram " + key.toString() + "!");

@@ -18,7 +18,7 @@ public class SecondMapReduce {
 
     public SecondMapReduce() {}
 
-    public static class SecondMapReduceMapper extends Mapper<LongWritable, Text, Bigram, IntWritable> {
+    public static class SecondMapReduceMapper extends Mapper<LongWritable, Text, Bigram, LongWritable> {
         //private Logger logger = Logger.getLogger(SecondMapReduceMapper.class);
 
         public SecondMapReduceMapper() {}
@@ -31,7 +31,7 @@ public class SecondMapReduce {
             Text second = new Text(itr.nextToken());
             Text decade = new Text(itr.nextToken());
             Text numberOfOccurrences = new Text(itr.nextToken());
-            IntWritable numberOfOccurrencesToSend = new IntWritable(Integer.parseInt(numberOfOccurrences.toString()));
+            LongWritable numberOfOccurrencesToSend = new LongWritable(Integer.parseInt(numberOfOccurrences.toString()));
             Bigram bigram = new Bigram(first,second,decade);
             Bigram bigramWithAsterisk = new Bigram(first,new Text("*"),decade);
 
@@ -42,17 +42,17 @@ public class SecondMapReduce {
         }
     }
 
-    public static class SecondMapReducePartitioner extends Partitioner< Bigram, IntWritable > {
+    public static class SecondMapReducePartitioner extends Partitioner< Bigram, LongWritable > {
 
         @Override
-        public int getPartition(Bigram bigram, IntWritable intWritable, int numReduceTasks) {
+        public int getPartition(Bigram bigram, LongWritable intWritable, int numReduceTasks) {
                         return Integer.parseInt(bigram.getDecade().toString())%numReduceTasks;
                     }
          }
 
-    public static class SecondMapReduceReducer extends Reducer<Bigram,IntWritable,Bigram,Text> {
+    public static class SecondMapReduceReducer extends Reducer<Bigram,LongWritable,Bigram,Text> {
         //private Logger logger = Logger.getLogger(SecondMapReduceMapper.class);
-        private int firstWordCounter;
+        private long firstWordCounter;
 
         //keep track of the incoming keys
         private Text currentFirstWord;
@@ -63,7 +63,7 @@ public class SecondMapReduce {
         }
 
         @Override
-        public void reduce(Bigram key, Iterable<IntWritable> values, Context context) throws IOException,  InterruptedException {
+        public void reduce(Bigram key, Iterable<LongWritable> values, Context context) throws IOException,  InterruptedException {
             //logger.info("------------------------");
             //logger.info("Reducer :: Input :: <key = " + key.toString() + ",value="+values.toString()+">");
             //logger.info("first word = "+currentFirstWord);
@@ -72,8 +72,8 @@ public class SecondMapReduce {
                     currentFirstWord = key.getFirst();
                     //logger.info("currentFirstWord changed to = "+currentFirstWord);
                     firstWordCounter = 0;
-                    int sum = 0;
-                    for (IntWritable value : values) {
+                    long sum = 0;
+                    for (LongWritable value : values) {
                         sum += value.get();
                     }
                     firstWordCounter += sum;
@@ -82,8 +82,8 @@ public class SecondMapReduce {
                         //logger.info("first word = "+currentFirstWord);
                         //logger.info("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
                         firstWordCounter = 0;
-                        int sum = 0;
-                        for (IntWritable value : values) {
+                        long sum = 0;
+                        for (LongWritable value : values) {
                             sum += value.get();
                         }
                         firstWordCounter += sum;

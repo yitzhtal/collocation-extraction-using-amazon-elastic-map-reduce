@@ -19,23 +19,33 @@ public class FirstMapReduce {
 
         public FirstMapReduce() {}
 
-        public static class FirstMapReduceMapper extends Mapper<LongWritable, Text, Bigram, IntWritable> {
+        public static class FirstMapReduceMapper extends Mapper<LongWritable, Text, Bigram, LongWritable> {
             //private Logger logger = Logger.getLogger(FirstMapReduceMapper.class);
 
-            final String[] EnglishStopWords = {"a","about","above","across","after","afterwards","again","against","all","almost","alone","along","already","also","although","always","am","among",
-                    "amongst","amoungst","amount","an","interest","into","is","it","its","itself","keep","last","should","show","side","since","sincere","six","there","thereafter","thereby","therefore","therein"
-                    ,"and","another","any","anyhow","anyone","anything","anyway","anywhere","are","around","as","at","back","be","became","because","become","becomes","becoming","been","before","thereupon","these",
-                    "beforehand","behind","being","below","beside","besides","between","beyond","bill","both","bottom","but","by","call","can","cannot","cant","co","computer","con","could","couldnt","cry",
-                    "de","describe","detail","do","done","down","due","during","each","eg","eight","either","eleven","else","elsewhere","empty","enough","etc","even","ever","every","everyone","everything"
-                    ,"everywhere","except","few","fifteen","fify","fill","find","fire","first","five","for","former","formerly","forty","found","four","from","front","full","further","get","give","go","had"
-                    ,"has","hasnt","have","he","hence","her","here","hereafter","hereby","herein","hereupon","hers","herself","him","himself","his","how","however","hundred","i","ie","if","in","inc","indeed"
-                    ,"latter","latterly","least","less","ltd","made","many","may","me","meanwhile","might","mill","mine","more","moreover","most","mostly","move","much","must","my","myself","name"
-                    ,"namely","neither","never","nevertheless","next","nine","no","nobody","none","noone","nor","not","nothing","now","nowhere","of","off","often","on","once","one","only","onto","or","other",
-                    "others","otherwise","our","ours","ourselves","out","over","own","part","per","perhaps","please","put","rather","re","same","see","seem","seemed","seeming","seems","serious","several","she"
-                    ,"sixty","so","some","somehow","someone","something","sometime","sometimes","somewhere","still","such","system","take","ten","than","that","the","their","them","themselves","then","thence"
-                    ,"they","thick","thin","third","this","those","though","three","through","throughout","thru","thus","to","together","too","top","toward","towards","twelve","twenty","two","un","under","until"
-                    ,"were","what","whatever","when","whence","whenever","where","whereafter","whereas","whereby","wherein","whereupon","wherever","whether","which","while","whither","who","whoever","whole","whom",
-                    "whose","why","will","with","within","without","would","yet","you","your","yours","yourself","yourselves","up","upon","us","very","via","was","we","well"};
+            final String[] EnglishStopWords = {"don't","your","without","via","these","would","because","near","ten","unlikely","thus","meanwhile","viz","here’s","yourselves","contains","eleven","detail","much","appropriate","wasn’t","anybody","least","example","same",
+                    "after","a","thanx","namely","i","the","fifth","thank","yours","novel","nine","hasn’t","got","empty","wish","besides","serious","others","need","its","often","onto","gone","aside","therefore",
+                    "hardly","that’s","useful","downwards","c's","nowhere","sorry","provides","forty","better","with","there","well","happens","tries","tried","per","went","considering","nothing","anyhow","specify","forth","ever","system",
+                    "even","thats","hundred","other","indicated","against","respectively","a's","howbeit","top","too","indicates","have","accordingly","particularly","thoroughly","awfully","who’s","ain't","com","con","almost","amoungst","upon","latterly",
+                    "amongst","etc","whether","quite","all","always","new","took","already","below","everyone","didn't","lest","shall","less","were","try","became","cause","around","it’s","and","saying","says","fifteen",
+                    "it’d","whence","cry","any","despite","followed","until","formerly","shouldn’t","gotten","anywhere","wherein","let","welcome","using","containing","want","each","specifying","himself","must","wouldn’t","maybe","probably","another",
+                    "two","anyway","found","are","does","taken","came","where","gives","think","entirely","call","such","doesn’t","ask","describe","through","anyways","becoming","comes, 'concerning","cant","had","weren’t","either","ours",
+                    "yourself","has","those","seeming","given","last","might","whatever","everywhere","name","overall","full","next","away","asking","nearly","show","you’re","non","anything","nor","not","now","hence","unto",
+                    "yes","was","yet","way","can’t","inasmuch","what","furthermore","hadn’t","three","when","put","her","whoever","far","truly","okay","give","having","hereupon","noone","couldnt","computer","merely","more",
+                    "unfortunately","lately","certain","before","tell","used","him","looks","his","few","consider","keeps","you’ll","described","otherwise","whither","particular","done","inner","both","most","twice","outside","keep","who",
+                    "part","their","why","elsewhere","alone","along","ltd","amount","move","hereafter","saw","also","say","enough","gets","someone","third","mean","various","neither","latter","uses","front","further","sometime",
+                    "been","mostly","hasnt","couldn't","appreciate","doesn't","you","afterwards","sure","going","bill","am","an","whose","former","mill","as","at","trying","they’ll","it’ll","looking","be","consequently","they’d",
+                    "how","see","inward","won’t","by","whom","indicate","mine","sixty","contain","possible","right","co","somewhat","under","did","de","sometimes","do","down","later","which","needs","ignored","eg",
+                    "thereafter","regarding","et","never","she","take","ex","immediate","relatively","aren't","little","however","some","rather","for","back","greetings","getting","perhaps","just","over","six","thence","where’s","go",
+                    "obviously","kept","they’re","let’s","although","selves","fify","he","isn’t","very","hi","he’s","placed","therein","thick","soon","thanks","else","four","beside","whereas","usually","ie","if","likely",
+                    "in","made","is","it","being","you’d","somebody","hello","whereby","secondly","become","whereupon","we’re","you’ve","eight","known","theres","hopefully","everything","can't","together","twenty","knows","side","may",
+                    "seemed","within","could","they’ve","off","able","theirs","presumably","use","several","while","liked","second","that","i’d","find","than","me","i’m","different","insofar","regardless","follows","seriously","fill",
+                    "my","plus","becomes","nd","couldn’t","since","behind","no","what’s","we’ve","best","of","hither","oh","somehow","ok","on","allows","brief","certainly","or","exactly","c'mon","due","about",
+                    "somewhere","above","fire","they","qv","old","myself","herein","them","then","something","rd","re","thereby","twelve","except","sincere","sub","nevertheless","don’t","believe","seen","seem","sup","into",
+                    "unless","so","apart","ought","though","necessary","one","aren’t","thorough","many","actually","appear","definitely","th","associated","to","but","we’d","willing","available","seven","mainly","zero","whenever","un",
+                    "up","five","us","beforehand","this","please","reasonably","look","thin","especially","once","know","vs","allow","que","doing","changes","ain’t","we","interest","themselves","throughout","wants","wonder","every",
+                    "again","t’s","indeed","i’ll","we’ll","ones","whole","during","none","beyond","didn’t","c’s","nobody","between","still","come","itself","toward","among","anyone","following","c’mon","our","ourselves","there’s",
+                    "specified","out","across","seeing","moreover","get","causes","course","sensible","wherever","help","cannot","self","hereby","whereafter","first","thru","own","clearly","should","only","from","a’s","like","bottom",
+                    "goes","towards","regards","sent","edu","herself","seems","thereupon","here","haven’t","everybody","according","hers","can","i’ve","said","value","inc","will","instead","really","currently","corresponding","tends","normally"};
 
             final String[] HebrewStopWords = {"של", "רב", "פי", "עם", "עליו", "עליהם", "על", "עד", "מן", "מכל", "מי", "מהם", "מה"
                     , "מ", "למה", "לכל", "לי", "לו", "להיות", "לה", "לא", "כן", "כמה", "כלי", "כל", "כי", "יש", "ימים", "יותר",
@@ -63,8 +73,6 @@ public class FirstMapReduce {
                 StringTokenizer itr = new StringTokenizer(value.toString());
 
                 if(itr.countTokens() == 6) { //if it is our format - firstword secondword decade p1 p2 p3
-                            boolean filterNumber = false;
-
                             String first_string = itr.nextToken();
                             if (first_string.contains("_")) first_string = first_string.substring(0, first_string.indexOf("_"));
                             Text first = new Text(first_string);
@@ -73,80 +81,69 @@ public class FirstMapReduce {
                             if (second_string.contains("_")) second_string = second_string.substring(0, second_string.indexOf("_"));
                             Text second = new Text(second_string);
 
-                            if (first_string.matches(".*\\d+.*") || second_string.matches(".*\\d+.*")) {
-                                filterNumber = true;
-                            }
-
-                            if (first_string.equals("׳") || second_string.equals("׳") || first_string.equals("•") || second_string.equals("•")
-                                    || first_string.equals("—") || second_string.equals("—")|| first_string.equals("/") || second_string.equals("/")
-                                    || first_string.equals("״") || second_string.equals("״")) {
-                                filterNumber = true;
-                            }
-
-                            if(!filterNumber) {
-                                            if (isStopWordsIncluded) {
+                            if (isStopWordsIncluded) {
                                                 boolean exist = false;
                                                 if (context.getConfiguration().get("language").equals("eng")) {
-                                                    first_string = first_string.trim().toLowerCase();
-                                                    second_string = second_string.trim().toLowerCase();
-                                                    for (int i = 0; i < EnglishStopWords.length; i++) {
-                                                        if (EnglishStopWords[i].equals(first_string) || EnglishStopWords[i].equals(second_string) || first_string.equals("") || second_string.equals("")) {
-                                                            exist = true;
-                                                            break;
+                                                        first_string = first_string.trim().toLowerCase();
+                                                        second_string = second_string.trim().toLowerCase();
+                                                        for (int i = 0; i < EnglishStopWords.length; i++) {
+                                                            if (EnglishStopWords[i].equals(first_string) || EnglishStopWords[i].equals(second_string) || first_string.equals("") || second_string.equals("")) {
+                                                                exist = true;
+                                                                break;
+                                                            }
                                                         }
-                                                    }
 
-                                                    if (!exist) {
-                                                        Text decade = new Text(itr.nextToken().substring(0, 3));
-                                                        Text numberOfOccurrences = new Text(itr.nextToken());
-                                                        Bigram bigram = new Bigram(first, second, decade);
-                                                        context.write(bigram, new IntWritable(Integer.parseInt(numberOfOccurrences.toString())));
-                                                    } else {
-                                                        //logger.info("Mapper :: has just found a stop word! rejected ->" + first_string + " or " + second_string + "!");
-                                                    }
+                                                        if (!exist) {
+                                                            Text decade = new Text(itr.nextToken().substring(0, 3));
+                                                            Text numberOfOccurrences = new Text(itr.nextToken());
+                                                            Bigram bigram = new Bigram(first, second, decade);
+                                                            context.write(bigram, new LongWritable(Integer.parseInt(numberOfOccurrences.toString())));
+                                                        } else {
+                                                            //logger.info("Mapper :: has just found a stop word! rejected ->" + first_string + " or " + second_string + "!");
+                                                        }
                                                 } else {
-                                                    for (int i = 0; i < HebrewStopWords.length; i++) {
-                                                        if (HebrewStopWords[i].equals(first_string) || HebrewStopWords[i].equals(second_string) || first_string.equals("") || second_string.equals("")) {
-                                                            exist = true;
-                                                            break;
+                                                        for (int i = 0; i < HebrewStopWords.length; i++) {
+                                                            if (HebrewStopWords[i].equals(first_string) || HebrewStopWords[i].equals(second_string) || first_string.equals("") || second_string.equals("")) {
+                                                                exist = true;
+                                                                break;
+                                                            }
                                                         }
-                                                    }
 
-                                                    if (!exist) {
-                                                        Text decade = new Text(itr.nextToken().substring(0, 3));
-                                                        Text numberOfOccurrences = new Text(itr.nextToken());
-                                                        Bigram bigram = new Bigram(first, second, decade);
-                                                        context.write(bigram, new IntWritable(Integer.parseInt(numberOfOccurrences.toString())));
-                                                    } else {
-                                                        //logger.info("Mapper :: has just found a stop word! rejected ->" + first_string + " or " + second_string + "!");
-                                                    }
+                                                        if (!exist) {
+                                                            Text decade = new Text(itr.nextToken().substring(0, 3));
+                                                            Text numberOfOccurrences = new Text(itr.nextToken());
+                                                            Bigram bigram = new Bigram(first, second, decade);
+                                                            context.write(bigram, new LongWritable(Integer.parseInt(numberOfOccurrences.toString())));
+                                                        } else {
+                                                            //logger.info("Mapper :: has just found a stop word! rejected ->" + first_string + " or " + second_string + "!");
+                                                        }
                                                 }
-                                            } else {
+                            } else {
                                                 Text decade = new Text(itr.nextToken().substring(0, 3));
                                                 Text numberOfOccurrences = new Text(itr.nextToken());
                                                 Bigram bigram = new Bigram(first, second, decade);
-                                                context.write(bigram, new IntWritable(Integer.parseInt(numberOfOccurrences.toString())));
-                                            }
+                                                context.write(bigram, new LongWritable(Integer.parseInt(numberOfOccurrences.toString())));
                             }
-                        }
-                    }
                 }
 
-            public static class FirstMapReduceReducer extends Reducer<Bigram,IntWritable,Bigram,IntWritable> {
+            }
+        }
+
+            public static class FirstMapReduceReducer extends Reducer<Bigram,LongWritable,Bigram,LongWritable> {
                 //private Logger logger = Logger.getLogger(FirstMapReduce.FirstMapReduceMapper.class);
 
                 @Override
-                public void reduce(Bigram key, Iterable<IntWritable> values, Context context) throws IOException, InterruptedException {
+                public void reduce(Bigram key, Iterable<LongWritable> values, Context context) throws IOException, InterruptedException {
                     //logger.info("------------------------");
                     //logger.info("Reducer :: Input :: <key = " + key.toString() + ",value=" + values.toString() + ">");
 
-                    int sum = 0;
-                    for (IntWritable value : values) {
+                    long sum = 0;
+                    for (LongWritable value : values) {
                         sum += value.get();
                     }
 
                     //logger.info("Reducer :: Output :: <key = " + key.toString() + ",value = " + new IntWritable(sum).toString() + ">");
-                    context.write(key, new IntWritable(sum));
+                    context.write(key, new LongWritable(sum));
                     //logger.info("------------------------");
                 }
             }

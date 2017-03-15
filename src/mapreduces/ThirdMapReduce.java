@@ -56,7 +56,7 @@ public class ThirdMapReduce {
 
     public static class ThirdMapReduceReducer extends Reducer<Bigram,Text,Bigram,Text> {
         //private Logger logger = Logger.getLogger(ThirdMapReduceMapper.class);
-        private int secondWordCounter;
+        private long secondWordCounter;
 
         //keep track of the incoming keys
         private Text currentSecondWord;
@@ -74,19 +74,19 @@ public class ThirdMapReduce {
             if(!key.getFirst().equals(currentSecondWord)) {
                 currentSecondWord = key.getFirst();
                 secondWordCounter = 0;
-                int sum = 0;
+                long sum = 0;
                 for (Text value : values) {
                     StringTokenizer itr = new StringTokenizer(value.toString());
-                    sum += Integer.parseInt(itr.nextToken());
+                    sum += Long.parseLong(itr.nextToken());
                 }
                 secondWordCounter += sum;
             } else {
                 if (key.getSecond().toString().equals("*")) {
                     secondWordCounter = 0;
-                    int sum = 0;
+                    long sum = 0;
                     for (Text value : values) {
                         StringTokenizer itr = new StringTokenizer(value.toString());
-                        sum += Integer.parseInt(itr.nextToken());
+                        sum += Long.parseLong(itr.nextToken());
                     }
                     secondWordCounter += sum;
                 } else {

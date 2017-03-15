@@ -54,7 +54,7 @@ public class FourthMapReduce {
 
     public static class FourthMapReduceReducer extends Reducer<Bigram,Text,Bigram,Text> {
         //private Logger logger = Logger.getLogger(FourthMapReduceMapper.class);
-        private int N;
+        private long N;
 
         //keep track of the incoming keys
         private Text currentDecade;
@@ -72,19 +72,19 @@ public class FourthMapReduce {
             if(!key.getDecade().equals(currentDecade)) {
                 currentDecade = key.getDecade();
                 N = 0;
-                int sum = 0;
+                long sum = 0;
                 for (Text value : values) {
                     StringTokenizer itr = new StringTokenizer(value.toString());
-                    sum += Integer.parseInt(itr.nextToken());
+                    sum += Long.parseLong(itr.nextToken());
                 }
                 N += sum;
             } else {
                 if (key.getFirst().toString().equals("*") && key.getSecond().toString().equals("*")) {
                     N = 0;
-                    int sum = 0;
+                    long sum = 0;
                     for (Text value : values) {
                         StringTokenizer itr = new StringTokenizer(value.toString());
-                        sum += Integer.parseInt(itr.nextToken());
+                        sum += Long.parseLong(itr.nextToken());
                     }
                     N += sum;
                 } else {

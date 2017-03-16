@@ -51,7 +51,7 @@ public class FourthMapReduce {
         private long N;
         private Text currentDecade;  //keep track of the incoming keys
 
-        protected void setup(Mapper.Context context) throws IOException, InterruptedException {
+        protected void setup(@SuppressWarnings("rawtypes") Mapper.Context context) throws IOException, InterruptedException {
             N = 0;
             currentDecade = new Text("");
         }
@@ -97,8 +97,6 @@ public class FourthMapReduce {
 
                     npmi = (double) pmi / formulaDenominator;
                     Text npmiAsText = new Text(String.valueOf(npmi));
-                    Double minPmi = Double.parseDouble(context.getConfiguration().get("minPmi"));
-                    Double relMinPmi = Double.parseDouble(context.getConfiguration().get("relMinPmi"));
                     context.write(new corpus.Bigram(key.getFirst(),key.getSecond(),key.getDecade()),npmiAsText);
 
                 }

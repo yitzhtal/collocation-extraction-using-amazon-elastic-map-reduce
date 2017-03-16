@@ -1,17 +1,16 @@
 package main;
 
-import mapreduces.FourthMapReduce;
-import mapreduces.ThirdMapReduce;
 import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.lib.input.SequenceFileInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
-import org.apache.hadoop.mapreduce.lib.input.SequenceFileInputFormat;
-import org.apache.hadoop.io.LongWritable;
+import mapreduces.FourthMapReduce;
+import mapreduces.ThirdMapReduce;
 
 public class CollocationExtraction {
 
@@ -22,7 +21,8 @@ public class CollocationExtraction {
     public static final String OUTPUT = "s3n://collocation-extraction-assignment/output/output.txt";
 
 
-    public static boolean setAndRunMapReduceJob (String jobName,Configuration conf, Class MapReduceClass,Class Mapper, Class Reducer,
+    @SuppressWarnings("unchecked")
+	public static boolean setAndRunMapReduceJob (String jobName,Configuration conf, Class<CollocationExtraction> MapReduceClass,Class Mapper, Class Reducer,
                                           Class MapOutputKey,Class MapOutputValue,Class ReduceOutputKey, Class ReduceOutputValue,
                                           String Input, String Output, boolean isLZO, Class partitionerClass) throws Exception{
         Job myJob = new Job(conf, jobName);
@@ -55,7 +55,7 @@ public class CollocationExtraction {
 
         String minPmi = args[0];
         String relMinPmi = args[1];
-        String language = args[2];
+        String language = args[2];	
         String isStopWordsIncluded = args[3];
         String INPUT = args[4];
 
@@ -80,8 +80,6 @@ public class CollocationExtraction {
         conf.set("yarn.scheduler.maximum-allocation-mb","12288");
         conf.set("yarn.nodemanager.resource.memory-mb","12288");
         conf.set("mapreduce.reduce.shuffle.memory.limit.percent","0.5");
-
-        FileSystem fs = FileSystem.get(conf);
 
         boolean waitForJobComletion = setAndRunMapReduceJob("FirstMapReduce",conf, main.CollocationExtraction.class,
                 mapreduces.FirstMapReduce.FirstMapReduceMapper.class, mapreduces.FirstMapReduce.FirstMapReduceReducer.class,

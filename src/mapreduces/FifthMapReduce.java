@@ -52,7 +52,7 @@ public class FifthMapReduce {
         //keep track of the incoming keys
         private Text currentDecade;
 
-        protected void setup(Mapper.Context context) throws IOException, InterruptedException {
+        protected void setup(@SuppressWarnings("rawtypes") Mapper.Context context) throws IOException, InterruptedException {
             sumOfAllNormalizedPMI = 0;
             currentDecade = new Text("");
         }
@@ -91,7 +91,6 @@ public class FifthMapReduce {
                     Text npmiAsText = new Text(String.valueOf(npmi));
                     double sumOfAllNormalizedPMIasDouble = Double.parseDouble(String.valueOf(sumOfAllNormalizedPMI));
                     double relativePMI = (double) npmi / sumOfAllNormalizedPMIasDouble;
-                    Text relativePMIAsText = new Text(String.valueOf(relativePMI));
                     Double minPmi = Double.parseDouble(context.getConfiguration().get("minPmi"));
                     Double relMinPmi = Double.parseDouble(context.getConfiguration().get("relMinPmi"));
 

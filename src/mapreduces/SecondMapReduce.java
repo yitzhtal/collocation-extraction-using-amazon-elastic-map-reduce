@@ -48,7 +48,7 @@ public class SecondMapReduce {
         private long firstWordCounter;
         private Text currentFirstWord; //keep track of the incoming keys
 
-        protected void setup(Mapper.Context context) throws IOException, InterruptedException {
+        protected void setup(@SuppressWarnings("rawtypes") Mapper.Context context) throws IOException, InterruptedException {
                 firstWordCounter = 0;
                 currentFirstWord = new Text("");
         }

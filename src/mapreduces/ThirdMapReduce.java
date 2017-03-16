@@ -52,7 +52,7 @@ public class ThirdMapReduce {
         private long secondWordCounter;
         private Text currentSecondWord;  //keep track of the incoming keys
 
-        protected void setup(Mapper.Context context) throws IOException, InterruptedException {
+        protected void setup(@SuppressWarnings("rawtypes") Mapper.Context context) throws IOException, InterruptedException {
             secondWordCounter = 0;
             currentSecondWord = new Text("");
         }

@@ -14,14 +14,10 @@ import com.amazonaws.services.elasticmapreduce.model.JobFlowInstancesConfig;
 import com.amazonaws.services.elasticmapreduce.model.RunJobFlowRequest;
 import com.amazonaws.services.elasticmapreduce.model.RunJobFlowResult;
 import com.amazonaws.services.elasticmapreduce.model.StepConfig;
-import com.amazonaws.services.elasticmapreduce.model.ScriptBootstrapActionConfig;
-import com.amazonaws.services.elasticmapreduce.model.BootstrapActionConfig;
-import com.amazonaws.services.elasticmapreduce.util.*;
 
 public class ElasticMapReduceRunner {
 
 	public static String propertiesFilePath = "C:\\IdeaProjects\\CollocationExtractionUsingAmazonElasticMapReduceProject\\src\\main\\resources\\AWSCredentials.properties";
-    //public static final String INPUT = "s3n://collocation-extraction-assignment/input/heb-2gram-1m.lzo";
 
     public static void main(String[] args) throws FileNotFoundException, IOException {
         System.out.println("ElasticMapReduceRunner :: has just started..");

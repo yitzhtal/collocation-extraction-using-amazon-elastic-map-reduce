@@ -2,13 +2,10 @@ package mapreduces;
 
 
 import corpus.Bigram;
-import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.Reducer;
-import org.apache.log4j.Logger;
-
 import java.io.IOException;
 import java.util.StringTokenizer;
 
@@ -20,7 +17,6 @@ public class FirstMapReduce {
         public FirstMapReduce() {}
 
         public static class FirstMapReduceMapper extends Mapper<LongWritable, Text, Bigram, LongWritable> {
-            //private Logger logger = Logger.getLogger(FirstMapReduceMapper.class);
 
             final String[] EnglishStopWords = {"don't","your","without","via","these","would","because","near","ten","unlikely","thus","meanwhile","viz","here’s","yourselves","contains","eleven","detail","much","appropriate","wasn’t","anybody","least","example","same",
                     "after","a","thanx","namely","i","the","fifth","thank","yours","novel","nine","hasn’t","got","empty","wish","besides","serious","others","need","its","often","onto","gone","aside","therefore",
@@ -69,7 +65,6 @@ public class FirstMapReduce {
 
             @Override
             public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-                //logger.info("Mapper :: Input :: <key = " + key.toString() + ",value = " + value.toString() + ">");
                 StringTokenizer itr = new StringTokenizer(value.toString());
 
                 if(itr.countTokens() == 6) { //if it is our format - firstword secondword decade p1 p2 p3
@@ -98,8 +93,6 @@ public class FirstMapReduce {
                                                             Text numberOfOccurrences = new Text(itr.nextToken());
                                                             Bigram bigram = new Bigram(first, second, decade);
                                                             context.write(bigram, new LongWritable(Integer.parseInt(numberOfOccurrences.toString())));
-                                                        } else {
-                                                            //logger.info("Mapper :: has just found a stop word! rejected ->" + first_string + " or " + second_string + "!");
                                                         }
                                                 } else {
                                                         for (int i = 0; i < HebrewStopWords.length; i++) {
@@ -114,8 +107,6 @@ public class FirstMapReduce {
                                                             Text numberOfOccurrences = new Text(itr.nextToken());
                                                             Bigram bigram = new Bigram(first, second, decade);
                                                             context.write(bigram, new LongWritable(Integer.parseInt(numberOfOccurrences.toString())));
-                                                        } else {
-                                                            //logger.info("Mapper :: has just found a stop word! rejected ->" + first_string + " or " + second_string + "!");
                                                         }
                                                 }
                             } else {
@@ -130,21 +121,14 @@ public class FirstMapReduce {
         }
 
             public static class FirstMapReduceReducer extends Reducer<Bigram,LongWritable,Bigram,LongWritable> {
-                //private Logger logger = Logger.getLogger(FirstMapReduce.FirstMapReduceMapper.class);
-
                 @Override
                 public void reduce(Bigram key, Iterable<LongWritable> values, Context context) throws IOException, InterruptedException {
-                    //logger.info("------------------------");
-                    //logger.info("Reducer :: Input :: <key = " + key.toString() + ",value=" + values.toString() + ">");
-
                     long sum = 0;
                     for (LongWritable value : values) {
                         sum += value.get();
                     }
 
-                    //logger.info("Reducer :: Output :: <key = " + key.toString() + ",value = " + new IntWritable(sum).toString() + ">");
                     context.write(key, new LongWritable(sum));
-                    //logger.info("------------------------");
                 }
             }
 }

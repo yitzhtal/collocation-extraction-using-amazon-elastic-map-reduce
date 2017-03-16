@@ -15,25 +15,10 @@ import org.apache.hadoop.io.LongWritable;
 
 public class CollocationExtraction {
 
-    //public static final String INPUT = "C:\\IdeaProjects\\CollocationExtractionUsingAmazonElasticMapReduceProject\\input.txt";
-    //public static final String INPUT = "s3n://collocation-extraction-assignment/input/heb-2gram-1m.lzo";
-    //public static final String INPUT = "s3n://datasets.elasticmapreduce/ngrams/books/20090715/eng-us-all/2gram/data";
-    //public static final String INPUT = "s3n://AKIAIEDRK6MPYXVQVG5A:rIp9QmdjO31t67qV8qhH5J5P6OuExDiYx1ialOt0@datasets.elasticmapreduce/ngrams/books/20090715/eng-us-all/2gram/data";
-
-
-    //private static final String FIRST_INTERMEDIATE_OUTPUT = "pipeline\\first_intermediate_output";
     private static final String FIRST_INTERMEDIATE_OUTPUT = "s3n://collocation-extraction-assignment/pipeline/first_intermediate_output";
-
-    //private static final String SECOND_INTERMEDIATE_OUTPUT = "pipeline\\second_intermediate_output";
     private static final String SECOND_INTERMEDIATE_OUTPUT = "s3n://collocation-extraction-assignment/pipeline/second_intermediate_output";
-
-    //private static final String THIRD_INTERMEDIATE_OUTPUT = "pipeline\\third_intermediate_output";
     private static final String THIRD_INTERMEDIATE_OUTPUT = "s3n://collocation-extraction-assignment/pipeline/third_intermediate_output";
-
-    //private static final String FOURTH_INTERMEDIATE_OUTPUT = "pipeline\\fourth_intermediate_output";
     private static final String FOURTH_INTERMEDIATE_OUTPUT = "s3n://collocation-extraction-assignment/pipeline/fourth_intermediate_output";
-
-    //public static final String OUTPUT = "C:\\IdeaProjects\\CollocationExtractionUsingAmazonElasticMapReduceProject\\pipeline\\OUTPUT";
     public static final String OUTPUT = "s3n://collocation-extraction-assignment/output/output.txt";
 
 

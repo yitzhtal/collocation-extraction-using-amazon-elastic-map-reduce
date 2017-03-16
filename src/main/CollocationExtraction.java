@@ -18,7 +18,7 @@ public class CollocationExtraction {
     private static final String SECOND_INTERMEDIATE_OUTPUT = "s3n://collocation-extraction-assignment/pipeline/second_intermediate_output";
     private static final String THIRD_INTERMEDIATE_OUTPUT = "s3n://collocation-extraction-assignment/pipeline/third_intermediate_output";
     private static final String FOURTH_INTERMEDIATE_OUTPUT = "s3n://collocation-extraction-assignment/pipeline/fourth_intermediate_output";
-    public static final String OUTPUT = "s3n://collocation-extraction-assignment/output/output.txt";
+    public static final String OUTPUT = "s3n://collocation-extraction-assignment/output";
 
 
     @SuppressWarnings("unchecked")

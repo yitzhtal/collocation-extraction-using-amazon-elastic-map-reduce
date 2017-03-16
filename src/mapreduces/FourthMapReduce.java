@@ -97,8 +97,7 @@ public class FourthMapReduce {
 
                     npmi = (double) pmi / formulaDenominator;
                     Text npmiAsText = new Text(String.valueOf(npmi));
-                    context.write(new corpus.Bigram(key.getFirst(),key.getSecond(),key.getDecade()),npmiAsText);
-
+                    if(npmi >= -1 && npmi <= 1) context.write(new corpus.Bigram(key.getFirst(),key.getSecond(),key.getDecade()),npmiAsText);
                 }
             }
         }

@@ -7,38 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="307c2673-7474-4882-b066-679414a8ae24" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/artifacts/ElasticMapReduceRunner_jar.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_amazonaws_aws_java_sdk_dynamodb_1_10_10.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mapreduces/FourthMapReduce$FourthMapReduceMapper.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mapreduces/FourthMapReduce$FourthMapReducePartitioner.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mapreduces/FourthMapReduce$FourthMapReduceReducer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mapreduces/FourthMapReduce.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/corpus/Bigram.class" afterPath="$PROJECT_DIR$/target/classes/corpus/Bigram.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/corpus/CalculatedBigram.class" afterPath="$PROJECT_DIR$/target/classes/corpus/CalculatedBigram.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/main/CollocationExtraction.class" afterPath="$PROJECT_DIR$/target/classes/main/CollocationExtraction.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/main/ElasticMapReduceRunner.class" afterPath="$PROJECT_DIR$/target/classes/main/ElasticMapReduceRunner.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapreduces/FifthMapReduce$FifthMapReduceMapper.class" afterPath="$PROJECT_DIR$/target/classes/mapreduces/FifthMapReduce$FifthMapReduceMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapreduces/FifthMapReduce$FifthMapReducePartitioner.class" afterPath="$PROJECT_DIR$/target/classes/mapreduces/FifthMapReduce$FifthMapReducePartitioner.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapreduces/FifthMapReduce$FifthMapReduceReducer.class" afterPath="$PROJECT_DIR$/target/classes/mapreduces/FifthMapReduce$FifthMapReduceReducer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapreduces/FifthMapReduce.class" afterPath="$PROJECT_DIR$/target/classes/mapreduces/FifthMapReduce.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapreduces/FirstMapReduce$FirstMapReduceMapper.class" afterPath="$PROJECT_DIR$/target/classes/mapreduces/FirstMapReduce$FirstMapReduceMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapreduces/FirstMapReduce$FirstMapReduceReducer.class" afterPath="$PROJECT_DIR$/target/classes/mapreduces/FirstMapReduce$FirstMapReduceReducer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapreduces/FirstMapReduce.class" afterPath="$PROJECT_DIR$/target/classes/mapreduces/FirstMapReduce.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapreduces/SecondMapReduce$SecondMapReduceMapper.class" afterPath="$PROJECT_DIR$/target/classes/mapreduces/SecondMapReduce$SecondMapReduceMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapreduces/SecondMapReduce$SecondMapReducePartitioner.class" afterPath="$PROJECT_DIR$/target/classes/mapreduces/SecondMapReduce$SecondMapReducePartitioner.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapreduces/SecondMapReduce$SecondMapReduceReducer.class" afterPath="$PROJECT_DIR$/target/classes/mapreduces/SecondMapReduce$SecondMapReduceReducer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapreduces/SecondMapReduce.class" afterPath="$PROJECT_DIR$/target/classes/mapreduces/SecondMapReduce.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapreduces/ThirdMapReduce$ThirdMapReduceMapper.class" afterPath="$PROJECT_DIR$/target/classes/mapreduces/ThirdMapReduce$ThirdMapReduceMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapreduces/ThirdMapReduce$ThirdMapReducePartitioner.class" afterPath="$PROJECT_DIR$/target/classes/mapreduces/ThirdMapReduce$ThirdMapReducePartitioner.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapreduces/ThirdMapReduce$ThirdMapReduceReducer.class" afterPath="$PROJECT_DIR$/target/classes/mapreduces/ThirdMapReduce$ThirdMapReduceReducer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapreduces/ThirdMapReduce.class" afterPath="$PROJECT_DIR$/target/classes/mapreduces/ThirdMapReduce.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/CollocationsExtractionUsingAmazonElasticMapReduce_jar.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/CollocationsExtractionUsingAmazonElasticMapReduce_jar.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CollocationsExtractionUsingAmazonElasticMapReduce.iml" afterPath="$PROJECT_DIR$/CollocationsExtractionUsingAmazonElasticMapReduce.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/CollocationExtraction.java" afterPath="$PROJECT_DIR$/src/main/CollocationExtraction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mapreduces/FourthMapReduce.java" afterPath="$PROJECT_DIR$/src/mapreduces/FourthMapReduce.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -98,7 +67,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FifthMapReduce.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FifthMapReduce.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/mapreduces/FifthMapReduce.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="441">
@@ -108,11 +77,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FourthMapReduce.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="FourthMapReduce.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/mapreduces/FourthMapReduce.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1979">
-              <caret line="98" column="46" lean-forward="false" selection-start-line="98" selection-start-column="46" selection-end-line="98" selection-end-column="46" />
+            <state relative-caret-position="250">
+              <caret line="75" column="3" lean-forward="true" selection-start-line="75" selection-start-column="3" selection-end-line="75" selection-end-column="3" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -664,8 +633,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="1176" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1616" height="1176" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32981783" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1050,21 +1019,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mapreduces/FourthMapReduce.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1979">
-          <caret line="98" column="46" lean-forward="false" selection-start-line="98" selection-start-column="46" selection-end-line="98" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/mapreduces/FifthMapReduce.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="441">
           <caret line="49" column="44" lean-forward="false" selection-start-line="49" selection-start-column="23" selection-end-line="49" selection-end-column="44" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mapreduces/FourthMapReduce.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="75" column="3" lean-forward="true" selection-start-line="75" selection-start-column="3" selection-end-line="75" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
